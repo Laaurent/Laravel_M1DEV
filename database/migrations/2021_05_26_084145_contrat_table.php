@@ -13,8 +13,18 @@ class ContratTable extends Migration
      */
     public function up()
     {
-        Schema::create('contrats', function (Blueprint $table) {
+        Schema::create('contracts', function (Blueprint $table) {
+            $table->increments('id');
             $table->timestamps();
+            $table->bigInteger('id_user')->unsigned();
+            $table->Integer('id_employe')->unsigned();
+
+            $table->foreign('id_user')
+                  ->references('id')->on('users')
+                  ->onDelete('cascade');
+            $table->foreign('id_employe')
+                  ->references('id')->on('employes')
+                  ->onDelete('cascade');
         });
     }
 

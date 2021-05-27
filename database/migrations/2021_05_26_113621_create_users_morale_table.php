@@ -13,8 +13,16 @@ class CreateUsersMoraleTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_morale', function (Blueprint $table) {
-            $table->id();
+        Schema::create('moral_users', function (Blueprint $table) {
+            $table->bigInteger('id_client')->unsigned();
+            $table->primary('id_client');
+            $table->string('name');
+            $table->bigInteger('SIRET_number');
+
+            $table->foreign('id_client')
+                ->references('id')
+                ->on('users'); 
+            
             $table->timestamps();
         });
     }

@@ -13,8 +13,19 @@ class ControleEtatTable extends Migration
      */
     public function up()
     {
-        Schema::create('controles_etat', function (Blueprint $table) {
+        Schema::create('states_controls', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('id_vehicule')->unsigned();
+            $table->integer('id_employe')->unsigned();
+            $table->text('commentaire')->nullable();
             $table->timestamps();
+
+            $table->foreign('id_vehicule')
+            ->references('id')->on('vehicules')
+            ->onDelete('cascade');
+            $table->foreign('id_employe')
+            ->references('id')->on('employes')
+            ->onDelete('cascade');
         });
     }
 

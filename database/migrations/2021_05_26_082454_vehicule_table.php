@@ -14,6 +14,10 @@ class VehiculeTable extends Migration
     public function up()
     {
         Schema::create('vehicules', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('model',255);
+            $table->bigInteger('weight');
+            $table->string('brand',255);
             $table->timestamps();
         });
     }

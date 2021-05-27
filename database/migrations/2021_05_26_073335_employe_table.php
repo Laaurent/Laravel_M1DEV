@@ -14,6 +14,9 @@ class EmployeTable extends Migration
     public function up()
     {
         Schema::create('employes', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('first_name',255);
+            $table->string('last_name',255);
             $table->timestamps();
         });
     }

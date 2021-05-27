@@ -13,7 +13,18 @@ class ContratVehiculeTable extends Migration
      */
     public function up()
     {
-        Schema::create('contrats_vehicules', function (Blueprint $table) {
+        Schema::create('contracts_vehicules', function (Blueprint $table) {
+            $table->integer('id_contract')->unsigned();
+            $table->integer('id_vehicule')->unsigned();
+            $table->primary(['id_contract', 'id_vehicule']);
+
+            $table->foreign('id_contract')
+                ->references('id')
+                ->on('contracts');    
+            $table->foreign('id_vehicule')
+                ->references('id')
+                ->on('vehicules');
+
             $table->timestamps();
         });
     }

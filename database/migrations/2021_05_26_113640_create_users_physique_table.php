@@ -13,8 +13,16 @@ class CreateUsersPhysiqueTable extends Migration
      */
     public function up()
     {
-        Schema::create('users_physique', function (Blueprint $table) {
-            $table->id();
+        Schema::create('physic_users', function (Blueprint $table) {
+            $table->bigInteger('id_client')->unsigned();
+            $table->primary('id_client');
+            $table->string('first_name',255);
+            $table->string('last_name',255);
+
+            $table->foreign('id_client')
+                ->references('id')
+                ->on('users');
+                
             $table->timestamps();
         });
     }

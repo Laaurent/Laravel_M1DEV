@@ -13,8 +13,16 @@ class ControleConformiteTable extends Migration
      */
     public function up()
     {
-        Schema::create('controles_conformite', function (Blueprint $table) {
+        Schema::create('conformities_controls', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('id_vehicule')->unsigned();
+            $table->date('date');
+            $table->text('commentaire')->nullable();
             $table->timestamps();
+
+            $table->foreign('id_vehicule')
+            ->references('id')->on('vehicules')
+            ->onDelete('cascade');
         });
     }
 
