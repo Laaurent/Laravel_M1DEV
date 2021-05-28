@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersPhysiqueTable extends Migration
+class CreatePhysicsClientsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateUsersPhysiqueTable extends Migration
      */
     public function up()
     {
-        Schema::create('physic_users', function (Blueprint $table) {
+        Schema::create('physics_clients', function (Blueprint $table) {
             $table->bigInteger('id_client')->unsigned();
             $table->primary('id_client');
             $table->string('first_name',255);
             $table->string('last_name',255);
 
             $table->foreign('id_client')
-                ->references('id')
-                ->on('users');
+                ->references('id_user')
+                ->on('clients');
                 
             $table->timestamps();
         });
@@ -34,6 +34,6 @@ class CreateUsersPhysiqueTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_physique');
+        Schema::dropIfExists('physics_clients');
     }
 }

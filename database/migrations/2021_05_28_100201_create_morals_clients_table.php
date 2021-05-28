@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersMoraleTable extends Migration
+class CreateMoralsClientsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,15 @@ class CreateUsersMoraleTable extends Migration
      */
     public function up()
     {
-        Schema::create('moral_users', function (Blueprint $table) {
+        Schema::create('morals_clients', function (Blueprint $table) {
             $table->bigInteger('id_client')->unsigned();
             $table->primary('id_client');
             $table->string('name');
             $table->bigInteger('SIRET_number');
 
             $table->foreign('id_client')
-                ->references('id')
-                ->on('users'); 
+                ->references('id_user')
+                ->on('clients'); 
             
             $table->timestamps();
         });
@@ -34,6 +34,6 @@ class CreateUsersMoraleTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users_morale');
+        Schema::dropIfExists('morals_clients');
     }
 }
