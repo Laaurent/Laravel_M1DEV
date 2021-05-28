@@ -9,4 +9,9 @@ class ContractVehicule extends Model
 {
     use HasFactory;
     protected $table = 'contracts_vehicules';
+
+    public function vehicule()
+    {
+        return $this->hasOne(Vehicule::class,'id','id_vehicule');
+    }
 }

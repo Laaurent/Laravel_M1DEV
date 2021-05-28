@@ -13,6 +13,7 @@
                         <thead>
                             <tr>
                                 <th>Client</th>
+                                <th>Véhicules</th>
                                 <th>Employe</th>
                                 <th>Date début</th>
                                 <th>Date fin</th>
@@ -23,10 +24,20 @@
                             @foreach ($contracts as $contract)
                                 <tr>
                                    <td>{{$contract->id_client}}</td>
+                                   <td>
+                                        @foreach ($contract->contract_vehicule as $contract2)
+                                            {{$contract2->vehicule->brand}} - {{$contract2->vehicule->model}} /
+                                        @endforeach
+                                   </td>
                                    <td>{{$contract->id_employe}}</td>
                                    <td>{{$contract->contract_start}}</td>
                                    <td>{{$contract->contract_end}}</td>
-                                   <td><a href="">voir</a><a href="">supprimer</a></td>
+                                   <td><a href="{{route('showContract',$contract->id)}}">voir</a>
+                                        <form action="{{route('destroyContract',$contract->id)}}" method="post">
+                                            @csrf
+                                            <input type="submit" name="destroy" value="supprimer"/>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

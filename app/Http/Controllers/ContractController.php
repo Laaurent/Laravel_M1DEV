@@ -19,7 +19,7 @@ class ContractController extends Controller
      */
     public function index()
     {
-         $contracts = Contract::all();
+         $contracts = Contract::with(['contract_vehicule.vehicule'])->get();
 
         return \view(
             'backoffice.contrats.index',
@@ -86,7 +86,7 @@ class ContractController extends Controller
      */
     public function show($id)
     {
-        //
+        echo('show contrat '.$id);
     }
 
     /**
@@ -120,6 +120,8 @@ class ContractController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $contract = Contract::where('id',$id)->delete();
+
+        return redirect()->route('contracts');
     }
 }
