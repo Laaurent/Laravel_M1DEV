@@ -18,6 +18,8 @@ class ContratTable extends Migration
             $table->timestamps();
             $table->bigInteger('id_user')->unsigned();
             $table->bigInteger('id_employe')->unsigned();
+            $table->date('contract_start');
+            $table->date('contract_end');
 
             $table->foreign('id_user')
                   ->references('id')->on('users')

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contract;
+use App\Models\Vehicule;
 
 class ContractController extends Controller
 {
@@ -31,7 +32,14 @@ class ContractController extends Controller
      */
     public function create()
     {
-        //
+         $vehicules = Vehicule::all();
+
+         return \view(
+            'backoffice.contrats.newContractIndex',
+            [
+                'vehicules' => $vehicules,
+            ]
+        );
     }
 
     /**
@@ -42,7 +50,7 @@ class ContractController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         echo("OK");
     }
 
     /**

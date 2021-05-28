@@ -25,8 +25,11 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('backoffice.dashboard');
 })->middleware(['auth'])->name('dashboard');
+
 //* CONTRATS
 Route::get('/contracts', [ContractController::class, 'index'])->middleware(['auth'])->name('contracts');
+Route::get('/contract/new', [ContractController::class, 'create'])->middleware(['auth'])->name('newContractIndex');
+Route::post('/contract/new', [ContractController::class, 'store'])->middleware(['auth'])->name('newContract');
 
 //* VEHICULES
 Route::get('/vehicules', [VehiculeController::class, 'index'])->middleware(['auth'])->name('vehicules');
