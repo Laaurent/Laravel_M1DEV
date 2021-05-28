@@ -15,14 +15,14 @@ class ContratTable extends Migration
     {
         Schema::create('contracts', function (Blueprint $table) {
             $table->increments('id');
-            $table->timestamps();
-            $table->bigInteger('id_user')->unsigned();
+            $table->bigInteger('id_client')->unsigned();
             $table->bigInteger('id_employe')->unsigned();
             $table->date('contract_start');
             $table->date('contract_end');
+            $table->timestamps();
 
-            $table->foreign('id_user')
-                  ->references('id')->on('users')
+            $table->foreign('id_client')
+                  ->references('id_user')->on('clients')
                   ->onDelete('cascade');
             $table->foreign('id_employe')
                   ->references('id_user')->on('employes')

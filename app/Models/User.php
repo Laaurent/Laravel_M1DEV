@@ -49,4 +49,9 @@ class User extends Authenticatable
      {
         return $this->name;
     }
+
+    /* public function client()
+    {
+        return $this->hasOne(Client::class,'id_user');
+    } */
 }

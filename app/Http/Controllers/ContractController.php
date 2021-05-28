@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Contract;
 use App\Models\Vehicule;
+use App\Models\Employe;
+use App\Models\ContractVehicule;
+use Auth;
+use Carbon\Carbon;
 
 class ContractController extends Controller
 {
@@ -35,7 +39,7 @@ class ContractController extends Controller
          $vehicules = Vehicule::all();
 
          return \view(
-            'backoffice.contrats.newContractIndex',
+            'backoffice.contrats.createContract',
             [
                 'vehicules' => $vehicules,
             ]
@@ -50,7 +54,28 @@ class ContractController extends Controller
      */
     public function store(Request $request)
     {
-         echo("OK");
+        $count = Employe::count();  
+
+        $contract = Contract::insertGetId([
+            'id_client' => Auth::id(),
+            'id_employe' => rand(1,$count),
+            'contract_start' => $request->contract_start,   
+            'contract_end' =>   $request->contract_end,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]); 
+
+        foreach($request->cars as $car)
+        {
+            $contract_vehicule = ContractVehicule::insert([
+                'id_contract' => $contract,
+                'id_vehicule' => $car,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ]); 
+        }
+
+        return redirect()->route('contracts');
     }
 
     /**

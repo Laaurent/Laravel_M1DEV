@@ -11,4 +11,9 @@ class Client extends Model
     use HasFactory;
 
       protected $fillable = ['id_user'];
+
+    /* public function user()
+    {
+        return $this->belongsTo(User::class,'id_user');
+    } */
 }

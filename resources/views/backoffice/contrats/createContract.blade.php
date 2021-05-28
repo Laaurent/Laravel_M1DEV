@@ -9,12 +9,12 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <form action="{{ route('newContract') }}" method="POST">
+                    <form action="{{ route('storeContract') }}" method="POST">
                         @csrf
                         
                         <div>
                             <label for="cars">Voitures</label>
-                            <select name="cars" id="cars" multiple>
+                            <select name="cars[]" id="cars" multiple required>
                                 @foreach ($vehicules as $vehicule)
                                     <option value="{{$vehicule->id}}">{{$vehicule->brand}} - {{$vehicule->model}} </option>
                                 @endforeach
@@ -22,11 +22,11 @@
                         </div>
                         <div>
                             <label for="start">Date début :</label>
-                            <input type="date" id="start" name="contract_start">
+                            <input type="date" id="start" name="contract_start" :value="old('contract_start')" required>
                         </div>
                         <div>
                             <label for="end">Date fin :</label>
-                            <input type="date" id="end" name="contract_end">
+                            <input type="date" id="end" name="contract_end" :value="old('contract_end')" required>
                         </div>
                         <input type="submit" value="Louer">
                     </form>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Client;
+use App\Models\MoralClient;
+use App\Models\PhysicClient;
 
 class ClientController extends Controller
 {
@@ -14,12 +16,14 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = Client::all();
+        $Mclients = MoralClient::with(['client'])->get();
+        $Pclients = PhysicClient::with(['client'])->get();
 
         return \view(
             'backoffice.clients.index',
             [
-                'clients' => $clients,
+                'morals_clients' => $Mclients,
+                'physics_clients' => $Pclients,
             ]
         );
     }
