@@ -23,7 +23,7 @@ class ContratTable extends Migration
                   ->references('id')->on('users')
                   ->onDelete('cascade');
             $table->foreign('id_employe')
-                  ->references('id')->on('employes')
+                  ->references('id_user')->on('employes')
                   ->onDelete('cascade');
         });
     }

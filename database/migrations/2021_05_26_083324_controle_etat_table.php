@@ -24,7 +24,7 @@ class ControleEtatTable extends Migration
             ->references('id')->on('vehicules')
             ->onDelete('cascade');
             $table->foreign('id_employe')
-            ->references('id')->on('employes')
+            ->references('id_user')->on('employes')
             ->onDelete('cascade');
         });
     }
