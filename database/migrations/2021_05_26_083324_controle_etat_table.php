@@ -16,7 +16,7 @@ class ControleEtatTable extends Migration
         Schema::create('states_controls', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('id_vehicule')->unsigned();
-            $table->integer('id_employe')->unsigned();
+            $table->bigInteger('id_employe')->unsigned();
             $table->text('commentaire')->nullable();
             $table->timestamps();
 

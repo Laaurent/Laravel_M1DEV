@@ -17,7 +17,7 @@ class ContratTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->bigInteger('id_user')->unsigned();
-            $table->Integer('id_employe')->unsigned();
+            $table->bigInteger('id_employe')->unsigned();
 
             $table->foreign('id_user')
                   ->references('id')->on('users')
