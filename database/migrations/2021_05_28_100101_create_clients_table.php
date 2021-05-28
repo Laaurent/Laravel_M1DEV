@@ -17,13 +17,15 @@ class CreateClientsTable extends Migration
             $table->bigInteger('id_user')->unsigned();
             $table->primary('id_user');
 
-            $table->integer('client_number')->unique();
             $table->timestamps();
 
             $table->foreign('id_user')
                 ->references('id')
                 ->on('users'); 
         });
+
+        //* Pas implémenté sous laravel
+        DB::statement('ALTER Table clients add client_number INTEGER NOT NULL UNIQUE AUTO_INCREMENT;');
     }
 
     /**

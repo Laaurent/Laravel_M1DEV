@@ -16,8 +16,8 @@ class CreateMoralsClientsTable extends Migration
         Schema::create('morals_clients', function (Blueprint $table) {
             $table->bigInteger('id_client')->unsigned();
             $table->primary('id_client');
-            $table->string('name');
-            $table->bigInteger('SIRET_number');
+            $table->string('name')->nullable();
+            $table->bigInteger('SIRET_number')->nullable();
 
             $table->foreign('id_client')
                 ->references('id_user')

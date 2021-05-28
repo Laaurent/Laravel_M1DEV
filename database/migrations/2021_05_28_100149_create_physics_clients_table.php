@@ -16,8 +16,8 @@ class CreatePhysicsClientsTable extends Migration
         Schema::create('physics_clients', function (Blueprint $table) {
             $table->bigInteger('id_client')->unsigned();
             $table->primary('id_client');
-            $table->string('first_name',255);
-            $table->string('last_name',255);
+            $table->string('first_name',255)->nullable();
+            $table->string('last_name',255)->nullable();
 
             $table->foreign('id_client')
                 ->references('id_user')

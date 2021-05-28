@@ -15,6 +15,7 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="node_modules/xel/xel.js" type="module"></script>
     </head>
     <body>
         <div class="font-sans text-gray-900 antialiased">
