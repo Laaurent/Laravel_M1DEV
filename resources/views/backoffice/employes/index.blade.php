@@ -4,7 +4,7 @@
             {{ __('Employés') }}
         </h2>
     </x-slot>
-
+    <a href="{{route('createEmploye')}}">Ajouter un Employé</a>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -22,7 +22,7 @@
                               <tr>
                                 <td>{{$employe->first_name}}</td>
                                 <td>{{$employe->last_name}}</td>
-                                <td><a href="">voir</a><a href="">supprimer</a></td>
+                                <td><a href="{{route('showEmploye',$employe->id)}}">voir</a><a href="">supprimer</a></td>
                             </tr>
                             @endforeach
                         </tbody>
