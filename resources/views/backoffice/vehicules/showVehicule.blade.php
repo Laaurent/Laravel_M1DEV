@@ -48,6 +48,7 @@
 
           <br>
           <h1>Historique des controle d'états</h1>
+          <a href="{{route('createState',$vehicule->id)}}">Ajouter un contrôle d'état'</a>
           <hr>
           <table>
             <thead>
@@ -68,6 +69,7 @@
           </table>
           <br>
           <h1>Historique des controle de conformités</h1>
+          <a href="{{route('createConformity',$vehicule->id)}}">Ajouter un contrôle de conformité</a>
           <hr>
           <table>
             <thead>
