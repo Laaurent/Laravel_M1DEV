@@ -9,11 +9,11 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <h1>Clients Morals</h1>
+                    <h1>Clients Moraux</h1>
                     <table>
                         <thead>
                             <tr>
-                                <th>N° CLient</th>
+                                <th>N° Client</th>
                                 <th>Nom</th>
                                 <th>N° SIRET</th>
                                 <th>Action</th>
@@ -21,12 +21,12 @@
                         </thead>
                         <tbody>
                             @foreach ($morals_clients as $client)
-                              <tr>
+                            <tr>
                                 <td>{{$client->client->client_number}}</td>
                                 <td>{{$client->name}}</td>
                                 <td>{{$client->SIRET_number}}</td>
-                               <td><a href="{{route('showClient',$client->client->client_number)}}">voir</a><a href="">supprimer</a></td>
-                              </tr>
+                                <td><a href="{{route('showClient',$client->client->client_number)}}">voir</a><a href="">supprimer</a></td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
@@ -43,12 +43,12 @@
                         </thead>
                         <tbody>
                             @foreach ($physics_clients as $client)
-                              <tr>
+                            <tr>
                                 <td>{{$client->client->client_number}}</td>
                                 <td>{{$client->first_name}}</td>
                                 <td>{{$client->last_name}}</td>
-                               <td><a href="{{route('showClient',$client->client->client_number)}}">voir</a><a href="">supprimer</a></td>
-                              </tr>
+                                <td><a href="{{route('showClient',$client->client->client_number)}}">voir</a><a href="">supprimer</a></td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>

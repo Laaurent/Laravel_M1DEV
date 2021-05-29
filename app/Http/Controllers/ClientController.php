@@ -57,7 +57,11 @@ class ClientController extends Controller
      */
     public function show($clientId)
     {
-        $client = Client::where('client_number',$clientId)->get();
+        $client = Client::where('client_number', $clientId)->first()->isPhysic()
+            ? Client::with(['physicClient'])->first()
+            : Client::with(['moralClient'])->first();
+
+        // $client = PhysicClient::where('id_client', $clientId)->first();
 
         return \view(
             'backoffice.clients.showClient',
