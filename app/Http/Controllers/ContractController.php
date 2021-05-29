@@ -86,7 +86,14 @@ class ContractController extends Controller
      */
     public function show($id)
     {
-        echo('show contrat '.$id);
+        $contract = Contract::find($id);
+
+        return \view(
+            'backoffice.contrats.showContract',
+            [
+                'contract' => $contract,
+            ]
+        );
     }
 
     /**
