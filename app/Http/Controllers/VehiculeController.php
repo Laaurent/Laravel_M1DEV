@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Vehicule;
+use Carbon\Carbon;
 
 class VehiculeController extends Controller
 {
@@ -42,7 +43,15 @@ class VehiculeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $vehicule = Vehicule::insert([
+            'brand' => $request->brand,
+            'model' => $request->model,
+            'weight' => $request->weight,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        return redirect()->route('vehicules');
     }
 
     /**
@@ -53,6 +62,14 @@ class VehiculeController extends Controller
      */
     public function show($id)
     {
+        $vehicule = Vehicule::find($id);
+
+        return \view(
+            'backoffice.vehicules.showVehicule',
+            [
+                'vehicule' => $vehicule,
+            ]
+        );
     }
 
     /**
@@ -63,7 +80,14 @@ class VehiculeController extends Controller
      */
     public function edit($id)
     {
-        //
+        $vehicule = Vehicule::find($id);
+
+        return \view(
+            'backoffice.vehicules.editVehicule',
+            [
+                'vehicule' => $vehicule,
+            ]
+        );
     }
 
     /**
@@ -86,6 +110,8 @@ class VehiculeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $vehicule = Vehicule::where('id', $id)->delete();
+
+        return redirect()->route('vehicules');
     }
 }

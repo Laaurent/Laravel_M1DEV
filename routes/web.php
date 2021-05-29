@@ -36,7 +36,11 @@ Route::post('/contract/delete/{id}', [ContractController::class, 'destroy'])->mi
 //* VEHICULES
 Route::get('/vehicules', [VehiculeController::class, 'index'])->middleware(['auth'])->name('vehicules');
 Route::get('/vehicule/new', [VehiculeController::class, 'create'])->middleware(['auth'])->name('createVehicule');
+Route::post('/vehicule/new', [VehiculeController::class, 'store'])->middleware(['auth'])->name('storeVehicule');
 Route::get('/vehicule/show/{id}', [VehiculeController::class, 'show'])->middleware(['auth'])->name('showVehicule');
+Route::get('/vehicule/edit/{id}', [VehiculeController::class, 'edit'])->middleware(['auth'])->name('editVehicule');
+Route::post('/vehicule/edit/{id}', [VehiculeController::class, 'update'])->middleware(['auth'])->name('updateVehicule');
+Route::post('/vehicule/delete/{id}', [VehiculeController::class, 'destroy'])->middleware(['auth'])->name('destroyVehicule');
 
 //* CONTROLES
 Route::get('/controls', [ControlController::class, 'index'])->middleware(['auth'])->name('controls');
