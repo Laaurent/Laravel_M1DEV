@@ -45,6 +45,27 @@
               @endforeach
             </tbody>
           </table>
+
+          <br>
+          <h1>Historique des controle d'états</h1>
+          <hr>
+          <table>
+            <thead>
+              <tr>
+                  <th>commentaire</th>
+                  <th>Controle fait par</th>
+
+                </tr>
+            </thead>
+            <tbody>
+              @foreach($vehicule->states_controls as $state)
+                <tr>
+                  <td>{{$state->commentaire}}</td>
+                  <td>{{$state->employe->first_name}}</td>
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
