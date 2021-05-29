@@ -9,7 +9,7 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200">
-          <form action="{{ route('storeContract') }}" method="POST">
+          <form action="{{ route('storeVehicule') }}" method="POST">
             @csrf
             <div>
               <label for="brand">Marque :</label>
@@ -34,13 +34,8 @@
               <label for="weight">Poids :</label>
               <input type="number" id="number" name="weight" value="{{$vehicule->weight}}" required>
             </div>
-            <input type="submit" value="Ajouter">
+            <input type="submit" value="Editer">
           </form>
-          <!-- <ul>
-            <li> Marque : {{$vehicule->brand}} </li>
-            <li> Modèle : {{$vehicule->model}} </li>
-            <li> Poids : {{$vehicule->weight}} </li>
-          </ul> -->
         </div>
       </div>
     </div>

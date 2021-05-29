@@ -99,7 +99,15 @@ class VehiculeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Vehicule::where('id', $id)
+            ->update([
+                'brand' => $request->brand,
+                'model' => $request->model,
+                'weight' => $request->weight,
+                'updated_at' => Carbon::now(),
+            ]);
+
+        return redirect()->route('vehicules');
     }
 
     /**
