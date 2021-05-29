@@ -24,7 +24,14 @@
                                 <td>{{$vehicule->brand}}</td>
                                 <td>{{$vehicule->model}}</td>
                                 <td>{{$vehicule->weight}}</td>
-                                <td><a href="">voir</a><a href="">supprimer</a></td>
+                                <td>
+                                    <a href="{{route('showVehicule',$vehicule->id)}}">voir</a>
+                                    <a href="{{route('editVehicule',$vehicule->id)}}">éditer</a>
+                                    <form action="{{route('destroyVehicule',$vehicule->id)}}" method="post">
+                                        @csrf
+                                        <input type="submit" name="destroy" value="supprimer" />
+                                    </form>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
