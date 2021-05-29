@@ -14,11 +14,19 @@
                         
                         <div>
                             <label for="cars">Voitures</label>
-                            <select name="cars[]" id="cars" multiple required>
-                                @foreach ($vehicules as $vehicule)
-                                    <option value="{{$vehicule->id}}">{{$vehicule->brand}} - {{$vehicule->model}} </option>
-                                @endforeach
-                            </select>
+                            @if (auth()->user()->client()->isPhysic())
+                                <select name="cars[]" id="cars" required>
+                                    @foreach ($vehicules as $vehicule)
+                                        <option value="{{$vehicule->id}}">{{$vehicule->brand}} - {{$vehicule->model}} </option>
+                                    @endforeach
+                                </select>
+                            @else
+                                <select name="cars[]" id="cars" multiple required>
+                                    @foreach ($vehicules as $vehicule)
+                                        <option value="{{$vehicule->id}}">{{$vehicule->brand}} - {{$vehicule->model}} </option>
+                                    @endforeach
+                                </select>
+                            @endif
                         </div>
                         <div>
                             <label for="start">Date début :</label>

@@ -16,7 +16,7 @@
             </div>
             <div>
               <label for="employe">Employé :</label>
-              <select name="employe" id="employe" value="{{$contract->id_employe}}" required>
+              <select class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" name="employe" id="employe" value="{{$contract->id_employe}}" required>
                 @foreach ($employes as $employe)
                   <option value="{{$employe->id}}">{{$employe->first_name}} - {{$employe->last_name}}</option>
                 @endforeach
@@ -24,12 +24,12 @@
             </div>
             <div>
               <label for="contract_start">Date début :</label>
-              <input type="date" id="contract_start" name="contract_start" value="{{$contract->contract_start}}" required>
+              <input class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" type="date" id="contract_start" name="contract_start" value="{{$contract->contract_start}}" required>
             </div>
 
             <div>
               <label for="contract_end">Date fin :</label>
-              <input type="date" id="contract_end" name="contract_end" value="{{$contract->contract_end}}" required>
+              <input class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" type="date" id="contract_end" name="contract_end" value="{{$contract->contract_end}}" required>
             </div>
             <div>
               <label for="vehicule">Véhicules :</label>
@@ -38,13 +38,13 @@
                   {{$contract->vehicule->type}} - {{$contract->vehicule->brand}} - {{$contract->vehicule->model}} /
                 @endforeach
               </p>
-              <select name="vehicule[]" id="vehicule" required multiple>
+              <select class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" name="vehicule[]" id="vehicule" required multiple>
                 @foreach ($vehicules as $vehicule)
                   <option value="{{$vehicule->id}}">{{$vehicule->brand}} - {{$vehicule->model}}</option>
                 @endforeach
               </select>
             </div>
-            <input type="submit" value="Editer">
+            <input class="mt-6 p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 justify-center focus:bg-purple-700 hover:bg-purple-500" type="submit" value="Editer">
           </form>
         </div>
       </div>

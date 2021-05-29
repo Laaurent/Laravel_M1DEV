@@ -4,8 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Auth;
 
-class Client
+class Employe
 {
     /**
      * Handle an incoming request.
@@ -16,6 +17,11 @@ class Client
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        $user = Auth::user();
+        if($user && $user->getAuthType() == 'employe')
+        {
+            return $next($request);
+        } 
+        return redirect()->route('dashboard');
     }
 }

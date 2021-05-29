@@ -9,40 +9,43 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <h1>Historique des controle d'états</h1>
+                    <h1 class="text-xl font-bold">Historique des controle d'états</h1>
                     <hr>
-                    <table>
+                    <table class=" w-full table-auto">
                         <thead>
-                        <tr>
-                            <th>commentaire</th>
-                            <th>Controle fait par</th>
-
+                            <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                                <th class="py-3 px-6 text-left">commentaire</th>
+                                <th class="py-3 px-6 text-left">Controle fait par</th>
+                                <th class="py-3 px-6 text-center">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="text-gray-600 text-sm font-light">
                         @foreach($states_controls as $state_control)
-                            <tr>
-                            <td>{{$state_control->commentaire}}</td>
-                            <td>{{$state_control->employe->first_name}} {{$state_control->employe->last_name}}</td>
+                            <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                <td  class="py-3 px-6 text-left">{{$state_control->commentaire}}</td>
+                                <td  class="py-3 px-6 text-left">{{$state_control->employe->first_name}} {{$state_control->employe->last_name}}</td>
+                                <td class="py-3 px-6 text-center">actions</td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
                     <br>
-                    <h1>Historique des controle de conformités</h1>
+                    <h1 class="text-xl font-bold">Historique des controle de conformités</h1>
                     <hr>
-                    <table>
+                    <table class=" w-full table-auto">
                         <thead>
-                        <tr>
-                            <th>commentaire</th>
-                            <th>date</th>
+                            <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                                <th class="py-3 px-6 text-left">commentaire</th>
+                                <th class="py-3 px-6 text-left">date</th>
+                                <th class="py-3 px-6 text-center">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody class="text-gray-600 text-sm font-light">
                         @foreach($conformities_controls as $conformity_control)
-                            <tr>
-                            <td>{{$conformity_control->commentaire}}</td>
-                            <td>{{$conformity_control->date}}</td>
+                            <tr class="border-b border-gray-200 hover:bg-gray-100">
+                                <td class="py-3 px-6 text-left">{{$conformity_control->commentaire}}</td>
+                                <td class="py-3 px-6 text-left">{{$conformity_control->date}}</td>
+                                <td class="py-3 px-6 text-center">actions</td>
                             </tr>
                         @endforeach
                         </tbody>

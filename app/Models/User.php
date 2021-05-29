@@ -42,12 +42,22 @@ class User extends Authenticatable
     ];
 
     public function getAuthType()
-     {
+    {
         return $this->user_type;
     }
     public function getAuthName()
-     {
+    {
         return $this->name;
+    }
+    public function isClient()
+    {
+        if($this->getAuthType() == 'client')
+            return true;
+        return false;
+    }
+    public function client()
+    {
+        return Client::where('id_user', $this->id)->first();
     }
 
     /* public function client()

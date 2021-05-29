@@ -13,14 +13,14 @@
             @csrf
             <div>
               <label for="type">Type :</label>
-              <select name="type" id="type" required>
+              <select class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" name="type" id="type" required>
                 <option value="leger">Leger </option>
                 <option value="utilitaire">Utilitaire </option>
               </select>
             </div>
             <div>
               <label for="brand">Marque :</label>
-              <select name="brand" id="brand" required>
+              <select class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" name="brand" id="brand" required>
                 <option value="Audi">Audi </option>
                 <option value="Peugeot">Peugeot </option>
                 <option value="Renault">Renault </option>
@@ -34,14 +34,14 @@
             </div>
             <div>
               <label for="model">Modèle :</label>
-              <input type="text" id="model" name="model" required>
+              <input class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" type="text" id="model" name="model" required>
             </div>
 
             <div>
               <label for="weight">Poids :</label>
-              <input type="number" id="number" name="weight" required>
+              <input class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" type="number" id="number" name="weight" required>
             </div>
-            <input type="submit" value="Ajouter">
+            <input class="mt-6 p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 justify-center focus:bg-purple-700 hover:bg-purple-500" type="submit" value="Ajouter">
           </form>
 
         </div>
