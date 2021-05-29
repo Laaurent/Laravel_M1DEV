@@ -17,6 +17,11 @@ class ClientSeeder extends Seeder
     public function run()
     {
         DB::table('clients')->insert([
+            'id_user' => 1,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+        DB::table('clients')->insert([
             'id_user' => 2,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()

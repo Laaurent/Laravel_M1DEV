@@ -13,4 +13,12 @@ class Contract extends Model
     {
         return $this->hasMany(ContractVehicule::class,'id_contract');
     }
+    public function employe()
+    {
+        return $this->hasOne(Employe::class,'id','id_employe');
+    }
+    public function client()
+    {
+        return $this->hasOne(Client::class,'id_user','id_client');
+    }
 }

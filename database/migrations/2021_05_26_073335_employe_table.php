@@ -14,8 +14,8 @@ class EmployeTable extends Migration
     public function up()
     {
         Schema::create('employes', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->bigInteger('id_user')->unsigned();
-            $table->primary('id_user');
 
             $table->string('first_name',255);
             $table->string('last_name',255);

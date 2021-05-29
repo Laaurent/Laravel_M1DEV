@@ -18,7 +18,7 @@ class EmployeSeeder extends Seeder
     public function run()
     {
          DB::table('employes')->insert([
-            'id_user' => 1,
+            'id_user' => 3,
             'first_name' => Str::random(10),
             'last_name' => Str::random(10),
             'created_at' => Carbon::now(),

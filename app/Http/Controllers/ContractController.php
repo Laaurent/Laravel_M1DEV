@@ -86,7 +86,7 @@ class ContractController extends Controller
      */
     public function show($id)
     {
-        $contract = Contract::find($id);
+        $contract = Contract::with(['contract_vehicule.vehicule','employe','client'])->find($id);
 
         return \view(
             'backoffice.contrats.showContract',

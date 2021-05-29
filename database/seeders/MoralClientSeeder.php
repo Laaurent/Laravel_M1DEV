@@ -18,7 +18,7 @@ class MoralClientSeeder extends Seeder
     public function run()
     {
         DB::table('morals_clients')->insert([
-            'id_client' => 2,
+            'id_client' => 1,
             'name' => Str::random(10),
             'SIRET_number' => 2416512,
             'created_at' => Carbon::now(),

@@ -18,7 +18,7 @@ class PhysicClientSeeder extends Seeder
     public function run()
     {
         DB::table('physics_clients')->insert([
-            'id_client' => 3,
+            'id_client' => 2,
             'first_name' => Str::random(10),
             'last_name' => Str::random(10),
             'created_at' => Carbon::now(),
