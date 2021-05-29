@@ -4,7 +4,6 @@
             {{ __('Clients') }}
         </h2>
     </x-slot>
-    <a href="{{route('createClient')}}">Créer un client</a>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -25,7 +24,11 @@
                                 <td>{{$client->client->client_number}}</td>
                                 <td>{{$client->name}}</td>
                                 <td>{{$client->SIRET_number}}</td>
-                                <td><a href="{{route('showClient',$client->client->client_number)}}">voir</a><a href="">supprimer</a></td>
+                                <td>
+                                    <a href="{{route('showClient',$client->client->client_number)}}">voir</a>
+                                    <a href="{{route('editClient',$client->client->client_number)}}">edit</a>
+                                    <a href="">supprimer</a>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -47,7 +50,11 @@
                                 <td>{{$client->client->client_number}}</td>
                                 <td>{{$client->first_name}}</td>
                                 <td>{{$client->last_name}}</td>
-                                <td><a href="{{route('showClient',$client->client->client_number)}}">voir</a><a href="">supprimer</a></td>
+                                <td>
+                                    <a href="{{route('showClient',$client->client->client_number)}}">voir</a>
+                                    <a href="{{route('editClient',$client->client->client_number)}}">edit</a>
+                                    <a href="">supprimer</a>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
