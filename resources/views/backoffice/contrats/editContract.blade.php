@@ -11,7 +11,6 @@
         <div class="p-6 bg-white border-b border-gray-200">
           <form action="{{ route('updateContract',$contract->id) }}" method="POST">
             @csrf
-            {{$contract}}
             <div>
               Client : n°{{$contract->id_client}}
             </div>
@@ -34,6 +33,11 @@
             </div>
             <div>
               <label for="vehicule">Véhicules :</label>
+              <p> Actuels :
+                @foreach ($contract->contract_vehicule as $contract)
+                  {{$contract->vehicule->type}} - {{$contract->vehicule->brand}} - {{$contract->vehicule->model}} /
+                @endforeach
+              </p>
               <select name="vehicule[]" id="vehicule" value="{{$contract_vehicule}}" required multiple>
                 @foreach ($vehicules as $vehicule)
                   <option value="{{$vehicule->id}}">{{$vehicule->brand}} - {{$vehicule->model}}</option>
