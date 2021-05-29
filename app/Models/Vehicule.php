@@ -9,4 +9,8 @@ class Vehicule extends Model
 {
     use HasFactory;
 
+    public function contract_vehicule()
+    {
+        return $this->hasMany(ContractVehicule::class,'id_vehicule');
+    }
 }
