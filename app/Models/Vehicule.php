@@ -17,4 +17,8 @@ class Vehicule extends Model
     {
         return $this->hasMany(StateControl::class,'id_vehicule');
     }
+    public function conformity_control()
+    {
+        return $this->hasMany(StateControl::class,'id_vehicule');
+    }
 }

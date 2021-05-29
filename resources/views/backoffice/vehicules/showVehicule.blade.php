@@ -66,6 +66,25 @@
               @endforeach
             </tbody>
           </table>
+          <br>
+          <h1>Historique des controle de conformités</h1>
+          <hr>
+          <table>
+            <thead>
+              <tr>
+                  <th>commentaire</th>
+                  <th>date</th>
+                </tr>
+            </thead>
+            <tbody>
+              @foreach($vehicule->conformity_control as $conf)
+                <tr>
+                  <td>{{$conf->commentaire}}</td>
+                  <td>{{$conf->date}}</td>
+                </tr>
+              @endforeach
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
