@@ -14,9 +14,11 @@
             <li> Marque : {{$vehicule->brand}} </li>
             <li> Modèle : {{$vehicule->model}} </li>
             <li> Poids : {{$vehicule->weight}} </li>
+            @if (!Auth::user()->isClient())
             <div class="mb-6 mt-6">
               <a class=" p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 justify-center focus:bg-purple-700 hover:bg-purple-500" href="{{route('editVehicule',$vehicule->id)}}">éditer</a>
             </div>
+            @endif
           </ul>
           <br>
           @if (!Auth::user()->isClient())
