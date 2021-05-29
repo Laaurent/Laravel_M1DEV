@@ -9,6 +9,7 @@ class StateControl extends Model
 {
     use HasFactory;
     protected $table = 'states_controls';
+    protected $fillable = ['date'];
     public function vehicule()
     {
         return $this->hasOne(Vehicule::class,'id','id_vehicule');

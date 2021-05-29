@@ -18,6 +18,7 @@ class ControleEtatTable extends Migration
             $table->integer('id_vehicule')->unsigned();
             $table->bigInteger('id_employe')->unsigned();
             $table->text('commentaire')->nullable();
+            $table->date('date');
             $table->timestamps();
 
             $table->foreign('id_vehicule')

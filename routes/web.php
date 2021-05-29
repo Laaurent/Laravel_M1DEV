@@ -55,6 +55,10 @@ Route::post('/vehicule/delete/{id}', [VehiculeController::class, 'destroy'])->mi
 
 //* CONTROLES
 Route::get('/controls', [ControlController::class, 'index'])->middleware(['auth'])->name('controls');
+Route::get('/control/conformite/vehicule/{id}/new', [ControlController::class, 'createConf'])->middleware(['auth'])->name('createConformity');
+Route::post('/control/conformite/vehicule/{id}/new', [ControlController::class, 'storeConf'])->middleware(['auth'])->name('storeConformity');
+Route::get('/control/etat/vehicule/{id}/new', [ControlController::class, 'createState'])->middleware(['auth'])->name('createState');
+Route::post('/control/etat/vehicule/{id}/new', [ControlController::class, 'storeState'])->middleware(['auth'])->name('storeState');
 
 //* EMPLOYES
 Route::get('/employes', [EmployeController::class, 'index'])->middleware(['auth'])->name('employes');
