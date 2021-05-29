@@ -35,7 +35,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return \view('backoffice.clients.createClient');
     }
 
     /**
@@ -60,8 +60,6 @@ class ClientController extends Controller
         $client = Client::where('client_number', $clientId)->first()->isPhysic()
             ? Client::with(['physicClient'])->first()
             : Client::with(['moralClient'])->first();
-
-        // $client = PhysicClient::where('id_client', $clientId)->first();
 
         return \view(
             'backoffice.clients.showClient',

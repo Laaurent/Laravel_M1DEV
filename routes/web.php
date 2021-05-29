@@ -52,6 +52,8 @@ Route::get('/employes', [EmployeController::class, 'index'])->middleware(['auth'
 
 //* CLIENTS
 Route::get('/clients', [ClientController::class, 'index'])->middleware(['auth'])->name('clients');
+Route::get('/client/new', [ClientController::class, 'create'])->middleware(['auth'])->name('createClient');
+Route::post('/client/new', [ClientController::class, 'store'])->middleware(['auth'])->name('storeClient');
 Route::get('/client/show/{clientId}', [ClientController::class, 'show'])->middleware(['auth'])->name('showClient');
 
 require __DIR__ . '/auth.php';
