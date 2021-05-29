@@ -44,6 +44,7 @@ class VehiculeController extends Controller
     public function store(Request $request)
     {
         $vehicule = Vehicule::insert([
+            'type' => $request->type,
             'brand' => $request->brand,
             'model' => $request->model,
             'weight' => $request->weight,
@@ -102,6 +103,7 @@ class VehiculeController extends Controller
        
         Vehicule::where('id', $id)
             ->update([
+                'type' => $request->type,
                 'brand' => $request->brand,
                 'model' => $request->model,
                 'weight' => $request->weight,

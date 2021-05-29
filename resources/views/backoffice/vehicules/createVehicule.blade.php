@@ -11,7 +11,13 @@
         <div class="p-6 bg-white border-b border-gray-200">
           <form action="{{ route('storeVehicule') }}" method="POST">
             @csrf
-
+            <div>
+              <label for="type">Type :</label>
+              <select name="type" id="type" required>
+                <option value="leger">Leger </option>
+                <option value="utilitaire">Utilitaire </option>
+              </select>
+            </div>
             <div>
               <label for="brand">Marque :</label>
               <select name="brand" id="brand" required>

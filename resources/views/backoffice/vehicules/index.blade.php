@@ -12,6 +12,7 @@
                     <table>
                         <thead>
                             <tr>
+                                <th>Type</th>
                                 <th>Marque</th>
                                 <th>Modele</th>
                                 <th>Poids</th>
@@ -21,6 +22,7 @@
                         <tbody>
                             @foreach ($vehicules as $vehicule)
                             <tr>
+                                <td>{{$vehicule->type}}</td>
                                 <td>{{$vehicule->brand}}</td>
                                 <td>{{$vehicule->model}}</td>
                                 <td>{{$vehicule->weight}}</td>

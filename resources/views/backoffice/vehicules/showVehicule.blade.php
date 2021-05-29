@@ -10,6 +10,7 @@
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200">
           <ul>
+            <li> Type : {{$vehicule->type}} </li>
             <li> Marque : {{$vehicule->brand}} </li>
             <li> Modèle : {{$vehicule->model}} </li>
             <li> Poids : {{$vehicule->weight}} </li>

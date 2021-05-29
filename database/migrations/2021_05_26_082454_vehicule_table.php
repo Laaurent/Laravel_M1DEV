@@ -15,6 +15,7 @@ class VehiculeTable extends Migration
     {
         Schema::create('vehicules', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('type',255)->default('leger');
             $table->string('model',255);
             $table->bigInteger('weight');
             $table->string('brand',255);

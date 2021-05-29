@@ -12,6 +12,13 @@
           <form action="{{ route('updateVehicule',$vehicule->id) }}" method="POST">
             @csrf
             <div>
+            <label for="type">Type :</label>
+            <select name="type" id="type" value="{{$vehicule->type}}" required>
+                <option value="leger">Leger </option>
+                <option value="utilitaire">Utilitaire </option>
+              </select>
+            </div>
+            <div>
               <label for="brand">Marque :</label>
               <select name="brand" id="brand" value="{{$vehicule->brand}}" required>
                 <option value="Audi">Audi </option>
