@@ -14,4 +14,8 @@ class Employe extends Model
     {
         return $this->hasMany(Contract::class,'id');
     }
+    public function states_controls()
+    {
+        return $this->hasMany(StateControl::class,'id');
+    }
 }
