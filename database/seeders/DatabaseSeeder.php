@@ -23,13 +23,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
+        $this->call(UserSeeder::class);
         $this->call(ClientSeeder::class);
         $this->call(ConformityControlSeeder::class);
         $this->call(ContractSeeder::class);
         $this->call(EmployeSeeder::class);
         $this->call(StateControlSeeder::class);
-        $this->call(UserSeeder::class);
         $this->call(VehiculeSeeder::class);   
         $this->call(MoralClientSeeder::class);   
         $this->call(PhysicClientSeeder::class);   

@@ -21,12 +21,12 @@ class ContratTable extends Migration
             $table->date('contract_end');
             $table->timestamps();
 
-            $table->foreign('id_client')
+           /*  $table->foreign('id_client')
                   ->references('id_user')->on('clients')
                   ->onDelete('cascade');
             $table->foreign('id_employe')
                   ->references('id_user')->on('employes')
-                  ->onDelete('cascade');
+                  ->onDelete('cascade'); */
         });
     }
 
