@@ -62,7 +62,7 @@ class VehiculeController extends Controller
      */
     public function show($id)
     {
-        $vehicule = Vehicule::find($id);
+        $vehicule = Vehicule::with('contract_vehicule.contract.employe','contract_vehicule.contract.client')->find($id);
 
         return \view(
             'backoffice.vehicules.showVehicule',

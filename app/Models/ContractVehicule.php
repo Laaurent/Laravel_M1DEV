@@ -14,4 +14,8 @@ class ContractVehicule extends Model
     {
         return $this->hasOne(Vehicule::class,'id','id_vehicule');
     }
+    public function contract()
+    {
+        return $this->hasOne(Contract::class,'id','id_contract');
+    }
 }
