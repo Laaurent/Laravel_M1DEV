@@ -25,7 +25,7 @@
                                 <td>{{$client->client->client_number}}</td>
                                 <td>{{$client->name}}</td>
                                 <td>{{$client->SIRET_number}}</td>
-                               <td><a href="">voir</a><a href="">supprimer</a></td>
+                               <td><a href="{{route('showClient',$client->client->client_number)}}">voir</a><a href="">supprimer</a></td>
                               </tr>
                             @endforeach
                         </tbody>
