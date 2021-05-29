@@ -7,6 +7,8 @@ use App\Http\Controllers\VehiculeController;
 use App\Http\Controllers\EmployeController;
 use App\Http\Controllers\ControlController;
 
+use App\Models\Contract;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,11 +21,18 @@ use App\Http\Controllers\ControlController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if(Auth::check()){
+        return redirect()->route('dashboard');
+    }
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
-    return view('backoffice.dashboard');
+    $contracts = Contract::where('id_client',Auth::id())->get();
+
+    return view('backoffice.dashboard',[
+        'contracts' => $contracts
+    ]);
 })->middleware(['auth'])->name('dashboard');
 
 //* CONTRATS

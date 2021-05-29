@@ -38,7 +38,7 @@
                   {{$contract->vehicule->type}} - {{$contract->vehicule->brand}} - {{$contract->vehicule->model}} /
                 @endforeach
               </p>
-              <select name="vehicule[]" id="vehicule" value="{{$contract_vehicule}}" required multiple>
+              <select name="vehicule[]" id="vehicule" required multiple>
                 @foreach ($vehicules as $vehicule)
                   <option value="{{$vehicule->id}}">{{$vehicule->brand}} - {{$vehicule->model}}</option>
                 @endforeach

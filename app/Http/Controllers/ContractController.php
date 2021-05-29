@@ -110,12 +110,9 @@ class ContractController extends Controller
 
         $employes = Employe::all();
 
-        /* $contract_vehicule = ContractVehicule::where('id_contract',$id)->select('id_vehicule')->pluck('id_vehicule'); */
-
         return \view(
             'backoffice.contrats.editContract',
             [
-                'contract_vehicule' => NULL,
                 'contract' => $contract,
                 'vehicules' => $vehicules,
                 'employes' => $employes,

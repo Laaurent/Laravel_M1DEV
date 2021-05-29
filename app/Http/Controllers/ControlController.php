@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\ConformityControl;
 use App\Models\StateControl;
 
+
 class ControlController extends Controller
 {
     /**
