@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employe;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -46,24 +47,17 @@ class EmployeController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'client_type' => 'required'
-        ]);
-
-
         $user = User::create([
             'name' => $request->pseudo,
             'email' => $request->email,
-            'user_type' => 0,
+            'user_type' => 'employe',
             'password' => Hash::make($request->password),
         ]);
+
         $employe = Employe::create([
-            'id_user' => $user->id,
             'first_name' => $request->first_name,
             'last_name' => $request->last_name,
+            'id_user' => $user->id,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
