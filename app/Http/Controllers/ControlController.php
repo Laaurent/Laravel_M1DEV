@@ -15,7 +15,7 @@ class ControlController extends Controller
      */
     public function index()
     {
-       $Scontrols = StateControl::all();
+       $Scontrols = StateControl::with('employe')->get();
        $Ccontrols = ConformityControl::all();
 
         return \view(

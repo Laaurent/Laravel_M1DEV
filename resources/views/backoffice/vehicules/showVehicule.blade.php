@@ -62,7 +62,7 @@
               @foreach($vehicule->states_controls as $state)
                 <tr>
                   <td>{{$state->commentaire}}</td>
-                  <td>{{$state->employe->first_name}}</td>
+                  <td>{{$state->employe->first_name}} {{$state->employe->last_name}}</td>
                 </tr>
               @endforeach
             </tbody>
