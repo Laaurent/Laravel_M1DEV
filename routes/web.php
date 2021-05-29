@@ -35,6 +35,8 @@ Route::post('/contract/delete/{id}', [ContractController::class, 'destroy'])->mi
 
 //* VEHICULES
 Route::get('/vehicules', [VehiculeController::class, 'index'])->middleware(['auth'])->name('vehicules');
+Route::get('/vehicule/new', [VehiculeController::class, 'create'])->middleware(['auth'])->name('createVehicule');
+Route::get('/vehicule/show/{id}', [VehiculeController::class, 'show'])->middleware(['auth'])->name('showVehicule');
 
 //* CONTROLES
 Route::get('/controls', [ControlController::class, 'index'])->middleware(['auth'])->name('controls');
@@ -45,4 +47,4 @@ Route::get('/employes', [EmployeController::class, 'index'])->middleware(['auth'
 //* CLIENTS
 Route::get('/clients', [ClientController::class, 'index'])->middleware(['auth'])->name('clients');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

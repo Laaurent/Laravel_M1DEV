@@ -4,7 +4,7 @@
             {{ __('Véhicules') }}
         </h2>
     </x-slot>
-
+    <a href="{{route('createVehicule')}}">Ajouter une voiture</a>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
@@ -14,18 +14,18 @@
                             <tr>
                                 <th>Marque</th>
                                 <th>Modele</th>
-                                <th>Poid</th>
+                                <th>Poids</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($vehicules as $vehicule)
-                                <tr>
-                                    <td>{{$vehicule->brand}}</td>
-                                    <td>{{$vehicule->model}}</td>
-                                    <td>{{$vehicule->weight}}</td>
-                                    <td><a href="">voir</a><a href="">supprimer</a></td>
-                                </tr>
+                            <tr>
+                                <td>{{$vehicule->brand}}</td>
+                                <td>{{$vehicule->model}}</td>
+                                <td>{{$vehicule->weight}}</td>
+                                <td><a href="">voir</a><a href="">supprimer</a></td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>

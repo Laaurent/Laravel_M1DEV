@@ -14,7 +14,7 @@ class VehiculeController extends Controller
      */
     public function index()
     {
-         $vehicules = Vehicule::all();
+        $vehicules = Vehicule::all();
 
         return \view(
             'backoffice.vehicules.index',
@@ -31,7 +31,7 @@ class VehiculeController extends Controller
      */
     public function create()
     {
-        //
+        return \view('backoffice.vehicules.createVehicule');
     }
 
     /**
@@ -53,7 +53,6 @@ class VehiculeController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
