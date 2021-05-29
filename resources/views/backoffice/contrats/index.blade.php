@@ -32,7 +32,9 @@
                                    <td>{{$contract->id_employe}}</td>
                                    <td>{{$contract->contract_start}}</td>
                                    <td>{{$contract->contract_end}}</td>
-                                   <td><a href="{{route('showContract',$contract->id)}}">voir</a>
+                                   <td>
+                                        <a href="{{route('showContract',$contract->id)}}">voir</a>
+                                        <a href="{{route('editContract',$contract->id)}}">éditer</a>
                                         <form action="{{route('destroyContract',$contract->id)}}" method="post">
                                             @csrf
                                             <input type="submit" name="destroy" value="supprimer"/>

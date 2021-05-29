@@ -31,6 +31,8 @@ Route::get('/contracts', [ContractController::class, 'index'])->middleware(['aut
 Route::get('/contract/new', [ContractController::class, 'create'])->middleware(['auth'])->name('createContract');
 Route::post('/contract/new', [ContractController::class, 'store'])->middleware(['auth'])->name('storeContract');
 Route::get('/contract/show/{id}', [ContractController::class, 'show'])->middleware(['auth'])->name('showContract');
+Route::get('/contract/edit/{id}', [ContractController::class, 'edit'])->middleware(['auth'])->name('editContract');
+Route::post('/contract/edit/{id}', [ContractController::class, 'update'])->middleware(['auth'])->name('updateContract');
 Route::post('/contract/delete/{id}', [ContractController::class, 'destroy'])->middleware(['auth'])->name('destroyContract');
 
 //* VEHICULES

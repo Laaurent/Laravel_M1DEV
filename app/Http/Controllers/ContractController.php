@@ -104,7 +104,23 @@ class ContractController extends Controller
      */
     public function edit($id)
     {
-        //
+        $contract = Contract::find($id);
+
+        $vehicules = Vehicule::all();
+
+        $employes = Employe::all();
+
+        $contract_vehicule = ContractVehicule::where('id_contract',$id)->select('id_vehicule')->pluck('id_vehicule');
+
+        return \view(
+            'backoffice.contrats.editContract',
+            [
+                'contract_vehicule' => $contract_vehicule,
+                'contract' => $contract,
+                'vehicules' => $vehicules,
+                'employes' => $employes,
+            ]
+        );
     }
 
     /**
@@ -116,7 +132,25 @@ class ContractController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Contract::where('id', $id)
+            ->update([
+                'id_employe' => $request->employe,
+                'contract_start' => $request->contract_start,
+                'contract_end' => $request->contract_end,
+                'updated_at' => Carbon::now(),
+            ]);
+
+        ContractVehicule::where('id_contract', $id)->delete();
+        
+        foreach ($request->vehicule as $key => $value) {
+            ContractVehicule::insert([
+                'id_contract' => $id,
+                'id_vehicule' => $value,
+                'updated_at' => Carbon::now(),
+            ]);
+        }
+    
+        return redirect()->route('contracts');
     }
 
     /**
