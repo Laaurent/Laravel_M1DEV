@@ -55,9 +55,16 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($clientId)
     {
-        //
+        $client = Client::where('client_number',$clientId)->get();
+
+        return \view(
+            'backoffice.clients.showClient',
+            [
+                'client' => $client,
+            ]
+        );
     }
 
     /**
