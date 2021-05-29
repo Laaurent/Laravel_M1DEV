@@ -47,6 +47,9 @@ Route::get('/controls', [ControlController::class, 'index'])->middleware(['auth'
 
 //* EMPLOYES
 Route::get('/employes', [EmployeController::class, 'index'])->middleware(['auth'])->name('employes');
+Route::get('/employe/show/{id}', [EmployeController::class, 'show'])->middleware(['auth'])->name('showEmploye');
+Route::get('/employe/new', [EmployeController::class, 'create'])->middleware(['auth'])->name('createEmploye');
+Route::post('/employe/new', [EmployeController::class, 'store'])->middleware(['auth'])->name('storeEmploye');
 
 //* CLIENTS
 Route::get('/clients', [ClientController::class, 'index'])->middleware(['auth'])->name('clients');

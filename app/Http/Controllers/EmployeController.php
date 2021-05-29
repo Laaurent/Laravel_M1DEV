@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Employe;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
 
 class EmployeController extends Controller
 {
@@ -31,7 +35,7 @@ class EmployeController extends Controller
      */
     public function create()
     {
-        //
+        return \view('backoffice.employes.createEmploye');
     }
 
     /**
@@ -42,7 +46,29 @@ class EmployeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'client_type' => 'required'
+        ]);
+
+
+        $user = User::create([
+            'name' => $request->pseudo,
+            'email' => $request->email,
+            'user_type' => 0,
+            'password' => Hash::make($request->password),
+        ]);
+        $employe = Employe::create([
+            'id_user' => $user->id,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
+        return redirect()->route('employes');
     }
 
     /**
@@ -53,7 +79,14 @@ class EmployeController extends Controller
      */
     public function show($id)
     {
-        //
+        $employe = Employe::with('contract.client')->find($id);
+
+        return \view(
+            'backoffice.employes.showEmploye',
+            [
+                'employe' => $employe,
+            ]
+        );
     }
 
     /**
