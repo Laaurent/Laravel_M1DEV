@@ -161,4 +161,15 @@ class ContractController extends Controller
 
 		return redirect()->route('contracts');
 	}
+
+	/**
+	 * Desacrive the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function desactive($id)
+	{
+		//
+	}
 }

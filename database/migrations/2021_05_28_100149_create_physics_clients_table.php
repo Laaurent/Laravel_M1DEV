@@ -18,12 +18,13 @@ class CreatePhysicsClientsTable extends Migration
             $table->primary('id_client');
             $table->string('first_name',255)->nullable();
             $table->string('last_name',255)->nullable();
-
+            $table->boolean('active')->default(1);
+            $table->timestamps();
+            
             $table->foreign('id_client')
                 ->references('id_user')
                 ->on('clients');
                 
-            $table->timestamps();
         });
     }
 

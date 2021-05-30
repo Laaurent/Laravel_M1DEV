@@ -19,6 +19,7 @@ class EmployeTable extends Migration
 
             $table->string('first_name',255);
             $table->string('last_name',255);
+            $table->boolean('active')->default(1);
 
             $table->timestamps();
 

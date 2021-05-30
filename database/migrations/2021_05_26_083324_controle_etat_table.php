@@ -19,6 +19,7 @@ class ControleEtatTable extends Migration
             $table->bigInteger('id_employe')->unsigned();
             $table->text('commentaire')->nullable();
             $table->date('date');
+            $table->boolean('active')->default(1);
             $table->timestamps();
 
             $table->foreign('id_vehicule')

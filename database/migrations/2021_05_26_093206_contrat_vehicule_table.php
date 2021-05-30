@@ -17,6 +17,8 @@ class ContratVehiculeTable extends Migration
             $table->integer('id_contract')->unsigned();
             $table->integer('id_vehicule')->unsigned();
             $table->primary(['id_contract', 'id_vehicule']);
+            $table->boolean('active')->default(1);
+            $table->timestamps();
 
             $table->foreign('id_contract')
                 ->references('id')
@@ -25,7 +27,6 @@ class ContratVehiculeTable extends Migration
                 ->references('id')
                 ->on('vehicules');
 
-            $table->timestamps();
         });
     }
 

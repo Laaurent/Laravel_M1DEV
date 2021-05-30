@@ -19,6 +19,7 @@ class VehiculeTable extends Migration
             $table->string('model',255);
             $table->bigInteger('weight');
             $table->string('brand',255);
+            $table->boolean('active')->default(1);
             $table->timestamps();
         });
     }
