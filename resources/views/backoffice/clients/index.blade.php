@@ -1,3 +1,6 @@
+@section('title')
+{{"Clients"}}
+@endsection
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -24,7 +27,7 @@
                                 <td class="py-3 px-6 text-left">{{$client->client->client_number}}</td>
                                 <td class="py-3 px-6 text-left">{{$client->name}}</td>
                                 <td class="py-3 px-6 text-left">{{$client->SIRET_number}}</td>
-                                <td class="py-3 px-6 text-center">               
+                                <td class="py-3 px-6 text-center">
                                     <div class="flex item-center justify-center">
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                             <a href="{{route('showClient',$client->client->id_user)}}">
@@ -45,7 +48,10 @@
                                             <form action="{{route('desactiveClient',$client->client->id_user)}}" method="post">
                                                 @csrf
                                                 <button type="submit" name="destroy" class="w-4 h-4">
-                                                    <svg fill="currentColor"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path  d="M24,1H0V7H1V24H23V7h1ZM2,3H22V5H2ZM21,22H3V7H21Z"/><rect x="8.5" y="9" width="7" height="2"/></svg>
+                                                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path d="M24,1H0V7H1V24H23V7h1ZM2,3H22V5H2ZM21,22H3V7H21Z" />
+                                                        <rect x="8.5" y="9" width="7" height="2" />
+                                                    </svg>
                                                 </button>
                                             </form>
                                         </div>
@@ -53,11 +59,11 @@
                                             <form action="{{route('destroyClient',$client->client->id_user)}}" method="post">
                                                 @csrf
                                                 <button type="submit" name="destroy" class="w-4 h-4">
-                                                
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                                        </svg>
-                                                    
+
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                    </svg>
+
                                                 </button>
                                             </form>
                                         </div>
@@ -84,7 +90,7 @@
                                 <td class="py-3 px-6 text-left">{{$client2->client->client_number}}</td>
                                 <td class="py-3 px-6 text-left">{{$client2->first_name}}</td>
                                 <td class="py-3 px-6 text-left">{{$client2->last_name}}</td>
-                                <td class="py-3 px-6 text-center">               
+                                <td class="py-3 px-6 text-center">
                                     <div class="flex item-center justify-center">
                                         <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
                                             <a href="{{route('showClient',$client2->client->id_user)}}">
@@ -105,7 +111,10 @@
                                             <form action="{{route('desactiveClient',$client2->client->id_user)}}" method="post">
                                                 @csrf
                                                 <button type="submit" name="destroy" class="w-4 h-4">
-                                                    <svg fill="currentColor"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path  d="M24,1H0V7H1V24H23V7h1ZM2,3H22V5H2ZM21,22H3V7H21Z"/><rect x="8.5" y="9" width="7" height="2"/></svg>
+                                                    <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                                        <path d="M24,1H0V7H1V24H23V7h1ZM2,3H22V5H2ZM21,22H3V7H21Z" />
+                                                        <rect x="8.5" y="9" width="7" height="2" />
+                                                    </svg>
                                                 </button>
                                             </form>
                                         </div>
@@ -113,11 +122,11 @@
                                             <form action="{{route('destroyClient',$client2->client->id_user)}}" method="post">
                                                 @csrf
                                                 <button type="submit" name="destroy" class="w-4 h-4">
-                                                
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                                        </svg>
-                                                    
+
+                                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                                    </svg>
+
                                                 </button>
                                             </form>
                                         </div>

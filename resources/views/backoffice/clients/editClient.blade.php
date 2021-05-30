@@ -1,3 +1,6 @@
+@section('title')
+{{"Editer le client "}} {{$client->user->name}}
+@endsection
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -32,14 +35,14 @@
               <input class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" type="text" id="last_name" name="last_name" value="{{$client->physicClient->last_name}}" required>
             </div>
             @else
-                <div>
-                  <label for="name">Nom :</label>
-                  <input class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" type="text" id="name" name="name" value="{{$client->moralClient->name}}" required>
-                </div>
-                <div>
-                  <label for="SIRET_number">N° SIRET :</label>
-                  <input class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" type="number" id="SIRET_number" name="SIRET_number" value="{{$client->moralClient->SIRET_number}}" required>
-                </div>
+            <div>
+              <label for="name">Nom :</label>
+              <input class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" type="text" id="name" name="name" value="{{$client->moralClient->name}}" required>
+            </div>
+            <div>
+              <label for="SIRET_number">N° SIRET :</label>
+              <input class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" type="number" id="SIRET_number" name="SIRET_number" value="{{$client->moralClient->SIRET_number}}" required>
+            </div>
             @endif
             <input class="mt-6 p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 justify-center focus:bg-purple-700 hover:bg-purple-500" type="submit" value="Editer">
           </form>

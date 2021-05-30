@@ -1,3 +1,6 @@
+@section('title')
+{{"Véhicules"}}
+@endsection
 <x-app-layout>
 	<x-slot name="header">
 		<h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -50,13 +53,16 @@
 											</a>
 										</div>
 										<div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                            <form action="{{route('desactiveVehicule',$vehicule->id)}}" method="post">
-                                                @csrf
-                                                <button type="submit" name="destroy" class="w-4 h-4">
-                                                    <svg fill="currentColor"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path  d="M24,1H0V7H1V24H23V7h1ZM2,3H22V5H2ZM21,22H3V7H21Z"/><rect x="8.5" y="9" width="7" height="2"/></svg>
-                                                </button>
-                                            </form>
-                                        </div>
+											<form action="{{route('desactiveVehicule',$vehicule->id)}}" method="post">
+												@csrf
+												<button type="submit" name="destroy" class="w-4 h-4">
+													<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+														<path d="M24,1H0V7H1V24H23V7h1ZM2,3H22V5H2ZM21,22H3V7H21Z" />
+														<rect x="8.5" y="9" width="7" height="2" />
+													</svg>
+												</button>
+											</form>
+										</div>
 										<div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
 											<form action="{{route('destroyVehicule',$vehicule->id)}}" method="post">
 												@csrf

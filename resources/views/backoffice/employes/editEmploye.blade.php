@@ -1,7 +1,10 @@
+@section('title')
+{{"Editer l'employé"}} {{$employe->user->name}}
+@endsection
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-      {{ __('Editer Employe') }}
+      {{ __('Editer Employé') }}
     </h2>
   </x-slot>
 
@@ -31,7 +34,7 @@
               <label for="email">Email :</label>
               <input class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" type="email" id="email" name="email" value="{{$employe->user->email}}" required>
             </div>
-    
+
             <input class="mt-6 p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 justify-center focus:bg-purple-700 hover:bg-purple-500" type="submit" value="Editer">
           </form>
         </div>

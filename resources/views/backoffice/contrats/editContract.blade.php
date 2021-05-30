@@ -1,3 +1,6 @@
+@section('title')
+{{"Editer un contrat"}}
+@endsection
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -18,7 +21,7 @@
               <label for="employe">Employé :</label>
               <select class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" name="employe" id="employe" value="{{$contract->id_employe}}" required>
                 @foreach ($employes as $employe)
-                  <option value="{{$employe->id}}">{{$employe->first_name}} - {{$employe->last_name}}</option>
+                <option value="{{$employe->id}}">{{$employe->first_name}} - {{$employe->last_name}}</option>
                 @endforeach
               </select>
             </div>
@@ -35,19 +38,19 @@
               <label for="vehicule">Véhicules :</label>
               <p> Actuels :
                 @foreach ($contract->contract_vehicule as $contract)
-                  {{$contract->vehicule->type}} - {{$contract->vehicule->brand}} - {{$contract->vehicule->model}} /
+                {{$contract->vehicule->type}} - {{$contract->vehicule->brand}} - {{$contract->vehicule->model}} /
                 @endforeach
               </p>
-               @if ($contract->id_client->isPhysic())
-               <select class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" name="vehicule[]" id="vehicule" required>
+              @if ($contract->id_client->isPhysic())
+              <select class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" name="vehicule[]" id="vehicule" required>
                 @foreach ($vehicules as $vehicule)
-                  <option value="{{$vehicule->id}}">{{$vehicule->brand}} - {{$vehicule->model}}</option>
+                <option value="{{$vehicule->id}}">{{$vehicule->brand}} - {{$vehicule->model}}</option>
                 @endforeach
               </select>
               @else
               <select class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" name="vehicule[]" id="vehicule" required multiple>
                 @foreach ($vehicules as $vehicule)
-                  <option value="{{$vehicule->id}}">{{$vehicule->brand}} - {{$vehicule->model}}</option>
+                <option value="{{$vehicule->id}}">{{$vehicule->brand}} - {{$vehicule->model}}</option>
                 @endforeach
               </select>
               @endif

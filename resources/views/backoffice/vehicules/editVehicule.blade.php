@@ -1,3 +1,6 @@
+@section('title')
+{{"Editer "}} {{$vehicule->brand}} {{$vehicule->model}}
+@endsection
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -12,8 +15,8 @@
           <form action="{{ route('updateVehicule',$vehicule->id) }}" method="POST">
             @csrf
             <div>
-            <label for="type">Type :</label>
-            <select class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" name="type" id="type" value="{{$vehicule->type}}" required>
+              <label for="type">Type :</label>
+              <select class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" name="type" id="type" value="{{$vehicule->type}}" required>
                 <option value="leger">Leger </option>
                 <option value="utilitaire">Utilitaire </option>
               </select>

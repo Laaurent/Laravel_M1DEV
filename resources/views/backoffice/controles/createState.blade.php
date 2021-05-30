@@ -1,3 +1,6 @@
+@section('title')
+{{"Ajouter un contôle d'état"}}
+@endsection
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
@@ -22,9 +25,9 @@
             <div>
               <label for="employe">Controle fait par :</label>
               <select class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" name="employe" id="employe" required>
-              @foreach($employes as $employe)
+                @foreach($employes as $employe)
                 <option value="{{$employe->id}}">{{$employe->first_name}} {{$employe->last_name}} </option>
-              @endforeach
+                @endforeach
               </select>
             </div>
             <input class="mt-6 p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 justify-center focus:bg-purple-700 hover:bg-purple-500" type="submit" value="Ajouter">
