@@ -18,6 +18,7 @@ class ControleConformiteTable extends Migration
             $table->integer('id_vehicule')->unsigned();
             $table->date('date');
             $table->text('commentaire')->nullable();
+            $table->boolean('active')->default(1);
             $table->timestamps();
 
             $table->foreign('id_vehicule')

@@ -104,7 +104,7 @@ class ClientController extends Controller
             'email' => $request->email,
             'updated_at' => Carbon::now()
         ]);
-        
+    
         if($user->client()->isPhysic())
         {
             $Pclient = PhysicClient::where('id_client', $id)->update([
@@ -133,6 +133,17 @@ class ClientController extends Controller
 	 * @return \Illuminate\Http\Response
 	 */
 	public function destroy($id)
+	{
+		//
+	}
+
+    /**
+	 * Desacrive the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function desactive($id)
 	{
 		//
 	}

@@ -58,13 +58,13 @@ class User extends Authenticatable
 		return false;
 	}
 
-	public function client()
+	/* public function client()
 	{
 		return Client::where('id_user', $this->id)->first();
-	}
+	} */
 
-	/* public function client()
+	public function client()
     {
-        return $this->hasOne(Client::class,'id_user');
-    } */
+        return $this->hasOne(Client::class,'id_user')->first();
+    }
 }

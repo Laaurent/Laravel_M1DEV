@@ -125,4 +125,15 @@ class VehiculeController extends Controller
 
 		return redirect()->route('vehicules');
 	}
+
+	/**
+	 * Desacrive the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function desactive($id)
+	{
+		//
+	}
 }

@@ -19,6 +19,7 @@ class ContratTable extends Migration
             $table->bigInteger('id_employe')->unsigned();
             $table->date('contract_start');
             $table->date('contract_end');
+            $table->boolean('active')->default(1);
             $table->timestamps();
 
            /*  $table->foreign('id_client')

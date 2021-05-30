@@ -132,4 +132,15 @@ class ControlController extends Controller
 	{
 		//
 	}
+
+	/**
+	 * Desacrive the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function desactive($id)
+	{
+		//
+	}
 }

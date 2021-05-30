@@ -18,12 +18,13 @@ class CreateMoralsClientsTable extends Migration
             $table->primary('id_client');
             $table->string('name')->nullable();
             $table->bigInteger('SIRET_number')->nullable();
+            $table->boolean('active')->default(1);
+            $table->timestamps();
 
             $table->foreign('id_client')
                 ->references('id_user')
                 ->on('clients'); 
             
-            $table->timestamps();
         });
     }
 
