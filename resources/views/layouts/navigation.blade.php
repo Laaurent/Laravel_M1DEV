@@ -12,29 +12,31 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    
+                    @if (Auth::user()->isClient())
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Tableau de bord') }}
                     </x-nav-link>
-                    
-                    <x-nav-link :href="route('vehicules')" :active="request()->routeIs('dashboard')">
-                        {{ __('Véhicules') }}
-                    </x-nav-link>
-                    @if (!Auth::user()->isClient())
-                        <x-nav-link :href="route('contracts')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link :href="route('showClient',Auth::id())">
+                        {{ __('Mon compte') }}
+                    </x-nav-link>                    
+                    @else
+                        <x-nav-link :href="route('contracts')">
                             {{ __('Contrats') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('controls')" :active="request()->routeIs('dashboard')">
+                        <x-nav-link :href="route('controls')">
                             {{ __('Controles') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('employes')" :active="request()->routeIs('dashboard')">
+                        <x-nav-link :href="route('employes')">
                             {{ __('Employés') }}
                         </x-nav-link>
                     
-                        <x-nav-link :href="route('clients')" :active="request()->routeIs('dashboard')">
+                        <x-nav-link :href="route('clients')">
                             {{ __('Clients') }}
                         </x-nav-link>
                     @endif
+                    <x-nav-link :href="route('vehicules')">
+                        {{ __('Véhicules') }}
+                    </x-nav-link>
                 </div>
             </div>
 

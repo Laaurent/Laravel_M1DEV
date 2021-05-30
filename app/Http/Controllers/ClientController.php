@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Client;
+use App\Models\User;
 use App\Models\MoralClient;
 use App\Models\PhysicClient;
+use Carbon\Carbon;
+use Auth;
 
 class ClientController extends Controller
 {
@@ -49,6 +52,7 @@ class ClientController extends Controller
 		//
 	}
 
+<<<<<<< HEAD
 	/**
 	 * Display the specified resource.
 	 *
@@ -60,6 +64,17 @@ class ClientController extends Controller
 		$client = Client::where('client_number', $clientId)->first()->isPhysic()
 			? Client::with(['physicClient'])->first()
 			: Client::with(['moralClient'])->first();
+=======
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $client = Client::where('id_user', $id)->with(['physicClient','moralClient','user'])->first();
+>>>>>>> laurent
 
 		return \view(
 			'backoffice.clients.showClient',
@@ -69,17 +84,15 @@ class ClientController extends Controller
 		);
 	}
 
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function edit($id)
-	{
-		$client = Client::where('client_number', $id)->first()->isPhysic()
-			? Client::with(['physicClient'])->first()
-			: Client::with(['moralClient'])->first();
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $client = Client::where('id_user', $id)->with(['physicClient','moralClient','user'])->first();
 
 		return \view(
 			'backoffice.clients.editClient',
@@ -89,17 +102,43 @@ class ClientController extends Controller
 		);
 	}
 
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  \Illuminate\Http\Request  $request
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function update(Request $request, $id)
-	{
-		//
-	}
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+       
+        $user = User::find($id);   
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'updated_at' => Carbon::now()
+        ]);
+        
+        if($user->client()->isPhysic())
+        {
+            $Pclient = PhysicClient::where('id_client', $id)->update([
+                'first_name' => $request->first_name,
+                'last_name' => $request->last_name,
+                'updated_at' => Carbon::now(),
+            ]);
+        } else {
+            $Mclient = MoralClient::where('id_client', $id)->update([
+                'name' => $request->name,
+                'SIRET_number' => $request->SIRET_number,
+                'updated_at' => Carbon::now(),
+            ]);
+        }
+        
+        if(Auth::user()->isClient())
+            return redirect()->route('showClient',Auth::id());
+        else
+            return redirect()->route('clients');
+    }
 
 	/**
 	 * Remove the specified resource from storage.
