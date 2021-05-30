@@ -53,6 +53,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/client/show/{id}', [ClientController::class, 'show'])->middleware(['client'])->name('showClient');
     Route::get('/client/edit/{id}', [ClientController::class, 'edit'])->middleware(['client'])->name('editClient');
     Route::post('/client/edit/{id}', [ClientController::class, 'update'])->middleware(['client'])->name('updateClient');
+    Route::post('/client/password/{id}', [ClientController::class, 'password'])->middleware(['client'])->name('passwordClient');
 
     Route::middleware(['employe'])->group(function () {
         //* CONTRATS
@@ -86,6 +87,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/employe/edit/{id}', [EmployeController::class, 'update'])->name('updateEmploye');
         Route::post('/employe/destroy/{id}', [EmployeController::class, 'destroy'])->name('destroyEmploye');
         Route::post('/employe/desactive/{id}', [EmployeController::class, 'desactive'])->name('desactiveEmploye');
+        Route::post('/employe/password/{id}', [EmployeController::class, 'password'])->name('passwordEmploye');
 
         //* CLIENTS
         Route::get('/clients', [ClientController::class, 'index'])->name('clients');
