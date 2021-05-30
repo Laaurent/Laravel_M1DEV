@@ -38,11 +38,19 @@
                   {{$contract->vehicule->type}} - {{$contract->vehicule->brand}} - {{$contract->vehicule->model}} /
                 @endforeach
               </p>
+               @if ($contract->id_client->isPhysic())
+               <select class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" name="vehicule[]" id="vehicule" required>
+                @foreach ($vehicules as $vehicule)
+                  <option value="{{$vehicule->id}}">{{$vehicule->brand}} - {{$vehicule->model}}</option>
+                @endforeach
+              </select>
+              @else
               <select class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" name="vehicule[]" id="vehicule" required multiple>
                 @foreach ($vehicules as $vehicule)
                   <option value="{{$vehicule->id}}">{{$vehicule->brand}} - {{$vehicule->model}}</option>
                 @endforeach
               </select>
+              @endif
             </div>
             <input class="mt-6 p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 justify-center focus:bg-purple-700 hover:bg-purple-500" type="submit" value="Editer">
           </form>

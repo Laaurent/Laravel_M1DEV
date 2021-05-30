@@ -17,6 +17,11 @@ class Client extends Model
     return PhysicClient::where('id_client', $this->id_user)->exists();
   }
 
+  public function user()
+  {
+    return $this->hasOne(User::class, 'id', 'id_user');
+  }
+
   public function moralClient()
   {
     return $this->hasOne(MoralClient::class, 'id_client', 'id_user');

@@ -50,9 +50,10 @@ Route::middleware(['auth'])->group(function () {
     //* EMPLOYES
 
     //* CLIENTS
-    Route::get('/client/show/{clientId}', [ClientController::class, 'show'])->name('showClient');
+    Route::get('/client/show/{id}', [ClientController::class, 'show'])->middleware(['client'])->name('showClient');
+    Route::get('/client/edit/{id}', [ClientController::class, 'edit'])->middleware(['client'])->name('editClient');
+    Route::post('/client/edit/{id}', [ClientController::class, 'update'])->middleware(['client'])->name('updateClient');
 
-    
     Route::middleware(['employe'])->group(function () {
         //* CONTRATS
         Route::get('/contracts', [ContractController::class, 'index'])->name('contracts');
@@ -82,8 +83,6 @@ Route::middleware(['auth'])->group(function () {
 
         //* CLIENTS
         Route::get('/clients', [ClientController::class, 'index'])->name('clients');
-        Route::get('/client/edit/{id}', [ClientController::class, 'edit'])->name('editClient');
-        Route::post('/client/edit/{id}', [ClientController::class, 'update'])->name('updateClient');
     });
 });
 
