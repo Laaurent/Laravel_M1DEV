@@ -9,6 +9,7 @@ class ConformityControl extends Model
 {
 	use HasFactory;
 	protected $table = 'conformities_controls';
+	protected $fillable = ['commentaire'];
 	public function vehicule()
 	{
 		return $this->hasOne(Vehicule::class, 'id', 'id_vehicule');
