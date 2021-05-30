@@ -22,10 +22,10 @@ class ContratVehiculeTable extends Migration
 
             $table->foreign('id_contract')
                 ->references('id')
-                ->on('contracts');    
+                ->on('contracts')->onDelete('cascade');;    
             $table->foreign('id_vehicule')
                 ->references('id')
-                ->on('vehicules');
+                ->on('vehicules')->onDelete('cascade');;
 
         });
     }

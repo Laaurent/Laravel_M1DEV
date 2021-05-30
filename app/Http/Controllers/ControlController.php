@@ -128,7 +128,11 @@ class ControlController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function destroy($id)
+	public function destroyConf($id)
+	{
+		//
+	}
+	public function destroyState($id)
 	{
 		//
 	}
@@ -139,8 +143,20 @@ class ControlController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function desactive($id)
+	public function desactiveConf($id)
 	{
-		//
+		$control = PhysicControl::where('id',$id)->update([
+			'active' => 0
+		]);
+
+		return redirect()->route('controls');
+	}
+	public function desactiveState($id)
+	{
+		$control = MoralControl::where('id',$id)->update([
+			'active' => 0
+		]);
+
+		return redirect()->route('controls');
 	}
 }

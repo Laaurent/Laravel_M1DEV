@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Client;
-use App\Models\MoralUser;
-use App\Models\PhysicUser;
+use App\Models\MoralClient;
+use App\Models\PhysicClient;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -54,13 +54,13 @@ class RegisteredUserController extends Controller
 		]);
 
 		if ($request->client_type == 'moral') {
-			$moralUser = MoralUser::create([
-				'id_client' => $client->id,
+			$moralUser = MoralClient::create([
+				'id_client' => $client->id_user,
 			]);
 		}
 		if ($request->client_type == 'physic') {
-			$physiclUser = PhysicUser::create([
-				'id_client' => $client->id,
+			$physiclUser = PhysicClient::create([
+				'id_client' => $client->id_user,
 			]);
 		}
 

@@ -134,7 +134,14 @@ class ClientController extends Controller
 	 */
 	public function destroy($id)
 	{
-		//
+		$client = Client::where('id_user', $id);
+
+		$client->first()->moralClient()->delete();
+		$client->first()->physicClient()->delete();
+		$client->first()->user()->delete();
+		$client->delete();
+
+		return redirect()->route('clients');
 	}
 
     /**
@@ -145,6 +152,21 @@ class ClientController extends Controller
 	 */
 	public function desactive($id)
 	{
-		//
+		$client = Client::where('id_user',$id);
+		
+		$client->update([
+			'active' => 0
+		]);
+		$client->first()->moralClient()->update([
+			'active' => 0
+		]);
+		$client->first()->physicClient()->update([
+			'active' => 0
+		]);
+		$client->first()->user()->update([
+			'active' => 0
+		]);
+
+		return redirect()->route('clients');
 	}
 }

@@ -60,6 +60,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/contract/edit/{id}', [ContractController::class, 'edit'])->name('editContract');
         Route::post('/contract/edit/{id}', [ContractController::class, 'update'])->name('updateContract');
         Route::post('/contract/delete/{id}', [ContractController::class, 'destroy'])->name('destroyContract');
+        Route::post('/contract/desactive/{id}', [ContractController::class, 'desactive'])->name('desactiveContract');
 
         //* VEHICULES
         Route::get('/vehicule/new', [VehiculeController::class, 'create'])->name('createVehicule');
@@ -67,6 +68,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/vehicule/edit/{id}', [VehiculeController::class, 'edit'])->name('editVehicule');
         Route::post('/vehicule/edit/{id}', [VehiculeController::class, 'update'])->name('updateVehicule');
         Route::post('/vehicule/delete/{id}', [VehiculeController::class, 'destroy'])->name('destroyVehicule');
+        Route::post('/vehicule/desactive/{id}', [VehiculeController::class, 'desactive'])->name('desactiveVehicule');
 
         //* CONTROLES
         Route::get('/controls', [ControlController::class, 'index'])->name('controls');
@@ -80,9 +82,12 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/employe/show/{id}', [EmployeController::class, 'show'])->name('showEmploye');
         Route::get('/employe/new', [EmployeController::class, 'create'])->name('createEmploye');
         Route::post('/employe/new', [EmployeController::class, 'store'])->name('storeEmploye');
+        
 
         //* CLIENTS
         Route::get('/clients', [ClientController::class, 'index'])->name('clients');
+        Route::post('/client/destroy/{id}', [ClientController::class, 'destroy'])->name('destroyClient');
+        Route::post('/client/desactive/{id}', [ClientController::class, 'desactive'])->name('desactiveClient');
     });
 });
 

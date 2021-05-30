@@ -14,8 +14,8 @@ class EmployeTable extends Migration
     public function up()
     {
         Schema::create('employes', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->bigInteger('id_user')->unsigned();
+            $table->increments('id');
+            $table->integer('id_user')->unsigned();
 
             $table->string('first_name',255);
             $table->string('last_name',255);
@@ -25,7 +25,7 @@ class EmployeTable extends Migration
 
             $table->foreign('id_user')
                 ->references('id')
-                ->on('users'); 
+                ->on('users')->onDelete('cascade');; 
         });
     }
 
