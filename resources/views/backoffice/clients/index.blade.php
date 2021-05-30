@@ -41,8 +41,16 @@
                                                 </svg>
                                             </a>
                                         </div>
-                                        <!-- <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                            <form action="" method="post">
+                                        <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                            <form action="{{route('desactiveClient',$client->client->id_user)}}" method="post">
+                                                @csrf
+                                                <button type="submit" name="destroy" class="w-4 h-4">
+                                                    <svg fill="currentColor"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path  d="M24,1H0V7H1V24H23V7h1ZM2,3H22V5H2ZM21,22H3V7H21Z"/><rect x="8.5" y="9" width="7" height="2"/></svg>
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                            <form action="{{route('destroyClient',$client->client->id_user)}}" method="post">
                                                 @csrf
                                                 <button type="submit" name="destroy" class="w-4 h-4">
                                                 
@@ -52,7 +60,7 @@
                                                     
                                                 </button>
                                             </form>
-                                        </div> -->
+                                        </div>
                                     </div>
                                 </td>
                             </tr>
@@ -93,8 +101,16 @@
                                                 </svg>
                                             </a>
                                         </div>
-                                        <!-- <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
-                                            <form action="" method="post">
+                                        <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                            <form action="{{route('desactiveClient',$client2->client->id_user)}}" method="post">
+                                                @csrf
+                                                <button type="submit" name="destroy" class="w-4 h-4">
+                                                    <svg fill="currentColor"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path  d="M24,1H0V7H1V24H23V7h1ZM2,3H22V5H2ZM21,22H3V7H21Z"/><rect x="8.5" y="9" width="7" height="2"/></svg>
+                                                </button>
+                                            </form>
+                                        </div>
+                                        <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
+                                            <form action="{{route('destroyClient',$client2->client->id_user)}}" method="post">
                                                 @csrf
                                                 <button type="submit" name="destroy" class="w-4 h-4">
                                                 
@@ -104,7 +120,7 @@
                                                     
                                                 </button>
                                             </form>
-                                        </div> -->
+                                        </div>
                                     </div>
                                 </td>
                             </tr>

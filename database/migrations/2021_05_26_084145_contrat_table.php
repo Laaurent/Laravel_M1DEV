@@ -15,8 +15,8 @@ class ContratTable extends Migration
     {
         Schema::create('contracts', function (Blueprint $table) {
             $table->increments('id');
-            $table->bigInteger('id_client')->unsigned();
-            $table->bigInteger('id_employe')->unsigned();
+            $table->integer('id_client')->unsigned();
+            $table->integer('id_employe')->unsigned();
             $table->date('contract_start');
             $table->date('contract_end');
             $table->boolean('active')->default(1);

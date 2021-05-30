@@ -121,7 +121,11 @@ class VehiculeController extends Controller
 	 */
 	public function destroy($id)
 	{
-		$vehicule = Vehicule::where('id', $id)->delete();
+		$vehicule = Vehicule::where('id', $id);
+		
+		$vehicule->first()->contract_vehicule()->first()->contract()->delete();
+		$vehicule->first()->contract_vehicule()->delete();
+		$vehicule->delete();
 
 		return redirect()->route('vehicules');
 	}
@@ -134,6 +138,22 @@ class VehiculeController extends Controller
 	 */
 	public function desactive($id)
 	{
-		//
+		$vehicule = Vehicule::where('id', $id);
+		
+		if($vehicule->first()->contract_vehicule()->first())
+		{
+			$vehicule->first()->contract_vehicule()->first()->contract()->update([
+				'active' => 0
+			]);
+			$vehicule->first()->contract_vehicule()->update([
+				'active' => 0
+			]);
+		}
+		
+		$vehicule->update([
+			'active' => 0
+		]);
+
+		return redirect()->route('vehicules');
 	}
 }

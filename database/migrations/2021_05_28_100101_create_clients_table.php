@@ -14,14 +14,15 @@ class CreateClientsTable extends Migration
     public function up()
     {
         Schema::create('clients', function (Blueprint $table) {
-            $table->bigInteger('id_user')->unsigned();
+            $table->integer('id_user')->unsigned();
             $table->primary('id_user');
             $table->boolean('active')->default(1);
             $table->timestamps();
 
             $table->foreign('id_user')
                 ->references('id')
-                ->on('users'); 
+                ->on('users')
+                ->onDelete('cascade');
         });
 
         //* Pas implémenté sous laravel

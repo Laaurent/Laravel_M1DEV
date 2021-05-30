@@ -157,7 +157,10 @@ class ContractController extends Controller
 	 */
 	public function destroy($id)
 	{
-		$contract = Contract::where('id', $id)->delete();
+		$contract = Contract::where('id', $id);
+
+		$contract->first()->contract_vehicule()->delete();
+		$contract->delete();
 
 		return redirect()->route('contracts');
 	}
@@ -170,6 +173,16 @@ class ContractController extends Controller
 	 */
 	public function desactive($id)
 	{
-		//
+		$contract = Contract::where('id',$id);
+		
+		$contract->update([
+			'active' => 0
+		]);
+
+		$contract->first()->contract_vehicule()->update([
+			'active' => 0
+		]);
+		
+		return redirect()->route('contracts');
 	}
 }

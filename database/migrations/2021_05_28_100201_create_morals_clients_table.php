@@ -14,16 +14,16 @@ class CreateMoralsClientsTable extends Migration
     public function up()
     {
         Schema::create('morals_clients', function (Blueprint $table) {
-            $table->bigInteger('id_client')->unsigned();
+            $table->integer('id_client')->unsigned();
             $table->primary('id_client');
             $table->string('name')->nullable();
-            $table->bigInteger('SIRET_number')->nullable();
+            $table->integer('SIRET_number')->nullable();
             $table->boolean('active')->default(1);
             $table->timestamps();
 
             $table->foreign('id_client')
                 ->references('id_user')
-                ->on('clients'); 
+                ->on('clients')->onDelete('cascade');; 
             
         });
     }
