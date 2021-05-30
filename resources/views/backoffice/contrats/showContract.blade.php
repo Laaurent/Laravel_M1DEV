@@ -19,7 +19,10 @@
 						<li>Client : {{$contract->contract_end}}</li>
 						<li>Vehicule :
 							@foreach ($contract->contract_vehicule as $contract2)
-							{{$contract2->vehicule->brand}} - {{$contract2->vehicule->model}} /
+							{{$contract2->vehicule->brand}} {{$contract2->vehicule->model}}
+							@if (!$loop->last)
+							/
+							@endif
 							@endforeach
 						</li>
 					</ul>

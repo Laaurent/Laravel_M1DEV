@@ -29,7 +29,10 @@
 								<td class="py-3 px-6 text-left">{{$contract->client->client_number}}</td>
 								<td class="py-3 px-6 text-left">
 									@foreach ($contract->contract_vehicule as $contract2)
-									{{$contract2->vehicule->brand}} - {{$contract2->vehicule->model}} /
+									{{$contract2->vehicule->brand}} {{$contract2->vehicule->model}}
+									@if (!$loop->last)
+									/
+									@endif
 									@endforeach
 								</td>
 								<td class="py-3 px-6 text-left">{{$contract->employe->first_name}} {{$contract->employe->last_name}}</td>
