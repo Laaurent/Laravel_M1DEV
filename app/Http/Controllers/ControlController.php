@@ -160,13 +160,9 @@ class ControlController extends Controller
 			'commentaire' => $request->commentaire,
 			'date' => $request->date
 		]);
-		return \view(
-			'backoffice.controles.showControl',
-			[
-				'state' => $controle->first(),
-			]
-		);
+		return redirect()->route('showVehicule', $controle->first()->vehicule->id);
 	}
+
 	public function updateConf(Request $request, $id)
 	{
 		$controle = ConformityControl::where('id',$id);
@@ -174,12 +170,7 @@ class ControlController extends Controller
 			'commentaire' => $request->commentaire,
 			'date' => $request->date
 		]);
-		return \view(
-			'backoffice.controles.showControl',
-			[
-				'conf' => $controle->first(),
-			]
-		);
+		return redirect()->route('showVehicule', $controle->first()->vehicule->id);
 	}
 
 	/**
