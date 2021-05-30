@@ -83,6 +83,10 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/control/conformite/vehicule/edit/{id}', [ControlController::class, 'updateConf'])->name('updateConformity');
         Route::get('/control/etat/vehicule/show/{id}', [ControlController::class, 'showState'])->name('showState');
         Route::get('/control/conformite/vehicule/show/{id}', [ControlController::class, 'showConf'])->name('showConformity');
+        Route::post('/control/etat/vehicule/desactive/{id}', [ControlController::class, 'desactiveState'])->name('desactiveState');
+        Route::post('/control/conformite/vehicule/desactive/{id}', [ControlController::class, 'desactiveConf'])->name('desactiveConformity');
+        Route::post('/control/etat/vehicule/destroy/{id}', [ControlController::class, 'destroyState'])->name('destroyState');
+        Route::post('/control/conformite/vehicule/destroy/{id}', [ControlController::class, 'destroyConf'])->name('destroyConformity');
 
         //* EMPLOYES
         Route::get('/employes', [EmployeController::class, 'index'])->name('employes');

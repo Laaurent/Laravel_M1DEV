@@ -181,11 +181,15 @@ class ControlController extends Controller
 	 */
 	public function destroyConf($id)
 	{
-		//
+		$control = ConformityControl::where('id',$id)->delete();
+
+		return redirect()->route('controls');
 	}
 	public function destroyState($id)
 	{
-		//
+		$control = StateControl::where('id',$id)->delete();
+
+		return redirect()->route('controls');
 	}
 
 	/**
@@ -196,7 +200,7 @@ class ControlController extends Controller
 	 */
 	public function desactiveConf($id)
 	{
-		$control = PhysicControl::where('id',$id)->update([
+		$control = ConformityControl::where('id',$id)->update([
 			'active' => 0
 		]);
 
@@ -204,7 +208,7 @@ class ControlController extends Controller
 	}
 	public function desactiveState($id)
 	{
-		$control = MoralControl::where('id',$id)->update([
+		$control = StateControl::where('id',$id)->update([
 			'active' => 0
 		]);
 
