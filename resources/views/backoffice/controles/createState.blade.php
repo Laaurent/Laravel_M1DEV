@@ -13,21 +13,21 @@
             @csrf
             <div>
               <label for="commentaire">Commentaire :</label>
-              <input type="text" id="commentaire" name="commentaire" required>
+              <input class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" type="text" id="commentaire" name="commentaire" required>
             </div>
             <div>
               <label for="date">Date :</label>
-              <input type="date" id="date" name="date" required>
+              <input class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" type="date" id="date" name="date" required>
             </div>
             <div>
               <label for="employe">Controle fait par :</label>
-              <select name="employe" id="employe" required>
+              <select class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" name="employe" id="employe" required>
               @foreach($employes as $employe)
                 <option value="{{$employe->id}}">{{$employe->first_name}} {{$employe->last_name}} </option>
               @endforeach
               </select>
             </div>
-            <input type="submit" value="Ajouter">
+            <input class="mt-6 p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 justify-center focus:bg-purple-700 hover:bg-purple-500" type="submit" value="Ajouter">
           </form>
 
         </div>

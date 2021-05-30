@@ -82,7 +82,7 @@
           <br>
           <h1 class="text-xl font-bold">Historique des controle d'états</h1>
           <div class="mb-6 mt-6">
-            <a class=" p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 justify-center focus:bg-purple-700 hover:bg-purple-500" href="{{route('createState',$vehicule->id)}}">Ajouter un contrôle d'état'</a>
+            <a class=" p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 justify-center focus:bg-purple-700 hover:bg-purple-500" href="{{route('createState',$vehicule->id)}}">Ajouter un contrôle d'état</a>
           </div>
           <hr>
           <table class=" w-full table-auto">
