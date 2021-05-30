@@ -91,7 +91,15 @@ class EmployeController extends Controller
 	 */
 	public function edit($id)
 	{
-		//
+		$employe = Employe::find($id)
+
+		
+		return \view(
+			'backoffice.employes.editEmploye',
+			[
+				'employe' => $employe,
+			]
+		);
 	}
 
 	/**

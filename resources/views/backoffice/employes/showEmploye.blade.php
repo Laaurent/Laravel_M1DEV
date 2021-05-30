@@ -4,7 +4,9 @@
 			{{ __('Employés') }}
 		</h2>
 	</x-slot>
-
+	<div class="mb-6 mt-6">
+              <a class=" p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 justify-center focus:bg-purple-700 hover:bg-purple-500" href="{{route('editEmploye',$employe->id)}}">éditer</a>
+            </div>
 	<div class="py-12">
 		<div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 			<div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
