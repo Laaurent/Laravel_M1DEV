@@ -52,19 +52,6 @@ class ClientController extends Controller
 		//
 	}
 
-<<<<<<< HEAD
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return \Illuminate\Http\Response
-	 */
-	public function show($clientId)
-	{
-		$client = Client::where('client_number', $clientId)->first()->isPhysic()
-			? Client::with(['physicClient'])->first()
-			: Client::with(['moralClient'])->first();
-=======
     /**
      * Display the specified resource.
      *
@@ -74,7 +61,6 @@ class ClientController extends Controller
     public function show($id)
     {
         $client = Client::where('id_user', $id)->with(['physicClient','moralClient','user'])->first();
->>>>>>> laurent
 
 		return \view(
 			'backoffice.clients.showClient',
