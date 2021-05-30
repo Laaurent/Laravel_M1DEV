@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\MoralClient;
 use App\Models\PhysicClient;
 use Carbon\Carbon;
+use Illuminate\Validation\Rules;
+use Illuminate\Support\Facades\Hash;
 use Auth;
 
 class ClientController extends Controller
@@ -168,5 +170,24 @@ class ClientController extends Controller
 		]);
 
 		return redirect()->route('clients');
+	}
+
+	/**
+	 *Change password of the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function password(Request $request,$id)
+	{
+		$request->validate([
+			'password' => ['required', 'confirmed', Rules\Password::defaults(),'different:old_password'],
+		]);
+
+		$user = user::where('id',Auth::id())->update([
+			'password' => Hash::make($request->password)
+		]);
+
+		return redirect()->route('showClient',$id);
 	}
 }

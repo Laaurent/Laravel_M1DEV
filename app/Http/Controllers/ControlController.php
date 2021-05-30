@@ -38,7 +38,7 @@ class ControlController extends Controller
 	public function createConf($id)
 	{
 		return \view(
-			'backoffice.controles.createConformity',
+			'backoffice.controles.createControl',
 			[
 				'id_vehicule' => $id,
 			]
@@ -48,7 +48,7 @@ class ControlController extends Controller
 	{
 		$employes = Employe::all();
 		return \view(
-			'backoffice.controles.createState',
+			'backoffice.controles.createControl',
 			[
 				'employes' => $employes,
 				'id_vehicule' => $id,
@@ -94,9 +94,27 @@ class ControlController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function show($id)
+	public function showState($id)
 	{
-		//
+		$controle = StateControl::with(['vehicule'])->where('id',$id)->first();
+		
+		return \view(
+			'backoffice.controles.showControl',
+			[
+				'state' => $controle,
+			]
+			);
+	}
+	public function showConf($id)
+	{
+		$controle = ConformityControl::with(['vehicule'])->where('id',$id)->first();
+
+		return \view(
+			'backoffice.controles.showControl',
+			[
+				'conf' => $controle,
+			]
+			);
 	}
 
 	/**
@@ -105,9 +123,27 @@ class ControlController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function edit($id)
+	public function editState($id)
 	{
-		//
+		$controle = StateControl::where('id',$id)->first();
+
+		return \view(
+			'backoffice.controles.editControl',
+			[
+				'state' => $controle,
+			]
+		);
+	}
+	public function editConf($id)
+	{
+		$controle = ConformityControl::where('id',$id)->first();
+
+		return \view(
+			'backoffice.controles.editControl',
+			[
+				'conf' => $controle,
+			]
+		);
 	}
 
 	/**
@@ -117,9 +153,24 @@ class ControlController extends Controller
 	 * @param  int  $id
 	 * @return \Illuminate\Http\Response
 	 */
-	public function update(Request $request, $id)
+	public function updateState(Request $request, $id)
 	{
-		//
+		$controle = StateControl::where('id', $id);
+		$controle->update([
+			'commentaire' => $request->commentaire,
+			'date' => $request->date
+		]);
+		return redirect()->route('showVehicule', $controle->first()->vehicule->id);
+	}
+
+	public function updateConf(Request $request, $id)
+	{
+		$controle = ConformityControl::where('id',$id);
+		$controle->update([
+			'commentaire' => $request->commentaire,
+			'date' => $request->date
+		]);
+		return redirect()->route('showVehicule', $controle->first()->vehicule->id);
 	}
 
 	/**
@@ -130,11 +181,15 @@ class ControlController extends Controller
 	 */
 	public function destroyConf($id)
 	{
-		//
+		$control = ConformityControl::where('id',$id)->delete();
+
+		return redirect()->route('controls');
 	}
 	public function destroyState($id)
 	{
-		//
+		$control = StateControl::where('id',$id)->delete();
+
+		return redirect()->route('controls');
 	}
 
 	/**
@@ -145,7 +200,7 @@ class ControlController extends Controller
 	 */
 	public function desactiveConf($id)
 	{
-		$control = PhysicControl::where('id',$id)->update([
+		$control = ConformityControl::where('id',$id)->update([
 			'active' => 0
 		]);
 
@@ -153,7 +208,7 @@ class ControlController extends Controller
 	}
 	public function desactiveState($id)
 	{
-		$control = MoralControl::where('id',$id)->update([
+		$control = StateControl::where('id',$id)->update([
 			'active' => 0
 		]);
 

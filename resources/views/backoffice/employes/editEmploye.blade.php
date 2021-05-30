@@ -36,19 +36,16 @@
       </div>
       <div class="mt-4 bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200">
-          <form action="{{ route('updateEmploye',$employe->id) }}" method="POST">
+        <x-auth-validation-errors class="mb-4" :errors="$errors" />
+          <form action="{{ route('passwordEmploye',$employe->id) }}" method="POST">
             @csrf
-              <div>
-              <label for="old_password">Mot de passe actuel :</label>
-              <input class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" type="password" id="old_password" name="old_password" value="" required>
-            </div> 
              <div>
               <label for="password">Nouveau mot de passe :</label>
               <input class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" type="password" id="password" name="password" value="" required>
             </div> 
              <div>
-              <label for="password2">Nouveau mot de passe confirmation :</label>
-              <input class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" type="password" id="password2" name="password2" value="" required>
+              <label for="password_confirmation">Nouveau mot de passe confirmation :</label>
+              <input class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" type="password" id="password_confirmation" name="password_confirmation" value="" required>
             </div> 
             <input class="mt-6 p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-64 justify-center focus:bg-purple-700 hover:bg-purple-500" type="submit" value="Changer de mot de passe">
           </form>
