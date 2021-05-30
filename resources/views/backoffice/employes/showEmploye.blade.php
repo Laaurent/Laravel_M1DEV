@@ -13,7 +13,10 @@
 			<div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 				<div class="p-6 bg-white border-b border-gray-200">
 					<ul>
+						<li> Pseudo : {{$employe->user->name}} </li>
+						<li> Email : {{$employe->user->email}} </li>
 						<li> Prénom : {{$employe->first_name}} </li>
+						<li> Nom : {{$employe->last_name}} </li>
 					</ul>
 					<br>
 					<div class="mb-6 mt-6">

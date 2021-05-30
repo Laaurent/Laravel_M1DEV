@@ -142,7 +142,13 @@ class EmployeController extends Controller
 	 */
 	public function destroy($id)
 	{
-		//
+		$employe = Employe::where('id', $id);
+		
+		$employe->first()->user()->delete();
+		$employe->first()->contract()->delete();
+		$employe->delete();
+
+		return redirect()->route('employes');
 	}
 
 	/**
@@ -153,9 +159,17 @@ class EmployeController extends Controller
 	 */
 	public function desactive($id)
 	{
-		$employe = Employe::where('id',$id)->update([
-			'active' => 0
-		]);
+		$employe = Employe::where('id', $id);
+		
+		$employe->first()->user()->update([
+				'active' => 0
+			]);
+		$employe->first()->contract()->update([
+				'active' => 0
+			]);
+		$employe->update([
+				'active' => 0
+			]);
 
 		return redirect()->route('employes');
 	}

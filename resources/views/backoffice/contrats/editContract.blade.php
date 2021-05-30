@@ -37,12 +37,12 @@
             <div>
               <label for="vehicule">Véhicules :</label>
               <p> Actuels :
-                @foreach ($contract->contract_vehicule as $contract)
-                {{$contract->vehicule->type}} - {{$contract->vehicule->brand}} - {{$contract->vehicule->model}} /
+                @foreach ($contract->contract_vehicule as $contract2)
+                  {{$contract2->vehicule->type}} - {{$contract2->vehicule->brand}} - {{$contract2->vehicule->model}} /
                 @endforeach
               </p>
-              @if ($contract->id_client->isPhysic())
-              <select class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" name="vehicule[]" id="vehicule" required>
+              @if ($contract->client->isPhysic())
+               <select class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" name="vehicule[]" id="vehicule" required>
                 @foreach ($vehicules as $vehicule)
                 <option value="{{$vehicule->id}}">{{$vehicule->brand}} - {{$vehicule->model}}</option>
                 @endforeach
