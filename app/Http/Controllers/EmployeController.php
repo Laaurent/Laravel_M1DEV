@@ -91,9 +91,8 @@ class EmployeController extends Controller
 	 */
 	public function edit($id)
 	{
-		$employe = Employe::find($id)
+		$employe = Employe::find($id);
 
-		
 		return \view(
 			'backoffice.employes.editEmploye',
 			[
@@ -111,7 +110,28 @@ class EmployeController extends Controller
 	 */
 	public function update(Request $request, $id)
 	{
-		//
+		$employe = Employe::find($id);
+		$employe->update([
+			'first_name' => $request->first_name,
+			'last_name' => $request->last_name,
+			'updated_at' => Carbon::now()
+		]);
+
+		$user = User::find($employe->id_user);   
+        $user->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'updated_at' => Carbon::now()
+        ]);
+
+
+		return \view(
+			'backoffice.employes.showEmploye',
+			[
+				'employe' => $employe,
+			]
+		);
+
 	}
 
 	/**

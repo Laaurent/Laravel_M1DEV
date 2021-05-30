@@ -4,17 +4,18 @@
 			{{ __('Employés') }}
 		</h2>
 	</x-slot>
-	<div class="mb-6 mt-6">
-              <a class=" p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 justify-center focus:bg-purple-700 hover:bg-purple-500" href="{{route('editEmploye',$employe->id)}}">éditer</a>
-            </div>
+
 	<div class="py-12">
 		<div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
 			<div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-				<div class="p-6 bg-white border-b border-gray-200">
+				<div class="p-6 bg-white border-b border-gray-200">		
 					<ul>
 						<li> Prénom : {{$employe->first_name}} </li>
 					</ul>
 					<br>
+					<div class="mb-6 mt-6">
+              			<a class=" p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 justify-center focus:bg-purple-700 hover:bg-purple-500" href="{{route('editEmploye',$employe->id)}}">éditer</a>
+            		</div>
 					<h1 class="text-xl font-bold">Historique des contrats</h1>
 					<hr>
 					<table class=" w-full table-auto">

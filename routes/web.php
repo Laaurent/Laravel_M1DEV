@@ -81,6 +81,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/employe/new', [EmployeController::class, 'create'])->name('createEmploye');
         Route::post('/employe/new', [EmployeController::class, 'store'])->name('storeEmploye');
         Route::get('/employe/edit/{id}', [EmployeController::class, 'edit'])->name('editEmploye');
+        Route::post('/employe/edit/{id}', [EmployeController::class, 'update'])->name('updateEmploye');
 
         //* CLIENTS
         Route::get('/clients', [ClientController::class, 'index'])->name('clients');
