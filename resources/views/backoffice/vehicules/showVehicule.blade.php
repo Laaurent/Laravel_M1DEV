@@ -142,12 +142,6 @@
             </thead>
             <tbody>
               @foreach($vehicule->conformity_control as $conf)
-<<<<<<< HEAD
-              <tr>
-                <td class="py-3 px-6 text-left">{{$conf->commentaire}}</td>
-                <td class="py-3 px-6 text-left">{{$conf->date}}</td>
-              </tr>
-=======
                 <tr>
                   <td class="py-3 px-6 text-left">{{$conf->commentaire}}</td>
                   <td class="py-3 px-6 text-left">{{$conf->date}}</td>
@@ -171,7 +165,6 @@
                     </div>
                   </td>
                 </tr>
->>>>>>> sol
               @endforeach
             </tbody>
           </table>
