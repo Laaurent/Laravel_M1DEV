@@ -9,106 +9,106 @@ use App\Models\PhysicClient;
 
 class ClientController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $Mclients = MoralClient::with(['client'])->get();
-        $Pclients = PhysicClient::with(['client'])->get();
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function index()
+	{
+		$Mclients = MoralClient::with(['client'])->get();
+		$Pclients = PhysicClient::with(['client'])->get();
 
-        return \view(
-            'backoffice.clients.index',
-            [
-                'morals_clients' => $Mclients,
-                'physics_clients' => $Pclients,
-            ]
-        );
-    }
+		return \view(
+			'backoffice.clients.index',
+			[
+				'morals_clients' => $Mclients,
+				'physics_clients' => $Pclients,
+			]
+		);
+	}
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+	/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return \Illuminate\Http\Response
+	 */
+	public function create()
+	{
+		//
+	}
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @return \Illuminate\Http\Response
+	 */
+	public function store(Request $request)
+	{
+		//
+	}
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($clientId)
-    {
-        $client = Client::where('client_number', $clientId)->first()->isPhysic()
-            ? Client::with(['physicClient'])->first()
-            : Client::with(['moralClient'])->first();
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function show($clientId)
+	{
+		$client = Client::where('client_number', $clientId)->first()->isPhysic()
+			? Client::with(['physicClient'])->first()
+			: Client::with(['moralClient'])->first();
 
-        return \view(
-            'backoffice.clients.showClient',
-            [
-                'client' => $client,
-            ]
-        );
-    }
+		return \view(
+			'backoffice.clients.showClient',
+			[
+				'client' => $client,
+			]
+		);
+	}
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        $client = Client::where('client_number', $id)->first()->isPhysic()
-            ? Client::with(['physicClient'])->first()
-            : Client::with(['moralClient'])->first();
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function edit($id)
+	{
+		$client = Client::where('client_number', $id)->first()->isPhysic()
+			? Client::with(['physicClient'])->first()
+			: Client::with(['moralClient'])->first();
 
-        return \view(
-            'backoffice.clients.editClient',
-            [
-                'client' => $client,
-            ]
-        );
-    }
+		return \view(
+			'backoffice.clients.editClient',
+			[
+				'client' => $client,
+			]
+		);
+	}
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  \Illuminate\Http\Request  $request
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function update(Request $request, $id)
+	{
+		//
+	}
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+	/**
+	 * Remove the specified resource from storage.
+	 *
+	 * @param  int  $id
+	 * @return \Illuminate\Http\Response
+	 */
+	public function destroy($id)
+	{
+		//
+	}
 }
