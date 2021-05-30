@@ -97,7 +97,7 @@ class ControlController extends Controller
 	public function showState($id)
 	{
 		$controle = StateControl::with(['vehicule'])->where('id',$id)->first();
-
+		
 		return \view(
 			'backoffice.controles.showControl',
 			[
