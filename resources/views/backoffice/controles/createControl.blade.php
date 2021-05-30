@@ -4,7 +4,11 @@
 <x-app-layout>
   <x-slot name="header">
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+    @if (isset($employes))
       {{ __('Ajouter un controle d\'état') }}
+    @else
+      {{ __('Ajouter un controle d\'état de conformité') }}
+    @endif
     </h2>
   </x-slot>
 
@@ -12,6 +16,7 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200">
+        @if (isset($employes))
           <form action="{{ route('storeState',$id_vehicule) }}" method="POST">
             @csrf
             <div>
@@ -32,7 +37,20 @@
             </div>
             <input class="mt-6 p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 justify-center focus:bg-purple-700 hover:bg-purple-500" type="submit" value="Ajouter">
           </form>
-
+        @else 
+        <form action="{{ route('storeConformity',$id_vehicule) }}" method="POST">
+            @csrf
+            <div>
+              <label for="commentaire">Commentaire :</label>
+              <input class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" type="text" id="commentaire" name="commentaire" required>
+            </div>
+            <div>
+              <label for="date">Date :</label>
+              <input class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" type="date" id="date" name="date" required>
+            </div>
+            <input class="mt-6 p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 justify-center focus:bg-purple-700 hover:bg-purple-500" type="submit" value="Ajouter">
+          </form>
+        @endif
         </div>
       </div>
     </div>

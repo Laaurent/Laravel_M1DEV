@@ -38,7 +38,7 @@ class ControlController extends Controller
 	public function createConf($id)
 	{
 		return \view(
-			'backoffice.controles.createConformity',
+			'backoffice.controles.createControl',
 			[
 				'id_vehicule' => $id,
 			]
@@ -48,7 +48,7 @@ class ControlController extends Controller
 	{
 		$employes = Employe::all();
 		return \view(
-			'backoffice.controles.createState',
+			'backoffice.controles.createControl',
 			[
 				'employes' => $employes,
 				'id_vehicule' => $id,
