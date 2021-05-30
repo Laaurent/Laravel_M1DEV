@@ -96,10 +96,10 @@ class ControlController extends Controller
 	 */
 	public function showState($id)
 	{
-		$controle = StateControl::with('vehicule')->find($id);
+		$controle = StateControl::with(['vehicule'])->where('id',$id)->first();
 
 		return \view(
-			'backoffice.controles.showState',
+			'backoffice.controles.showControl',
 			[
 				'state' => $controle,
 			]
@@ -107,10 +107,10 @@ class ControlController extends Controller
 	}
 	public function showConf($id)
 	{
-		$controle = ConformityControl::with('vehicule')->find($id);
+		$controle = ConformityControl::with(['vehicule'])->where('id',$id)->first();
 
 		return \view(
-			'backoffice.controles.showConformity',
+			'backoffice.controles.showControl',
 			[
 				'conf' => $controle,
 			]
@@ -125,10 +125,10 @@ class ControlController extends Controller
 	 */
 	public function editState($id)
 	{
-		$controle = StateControl::find($id);
+		$controle = StateControl::where('id',$id)->first();
 
 		return \view(
-			'backoffice.controles.editState',
+			'backoffice.controles.editControl',
 			[
 				'state' => $controle,
 			]
@@ -136,10 +136,10 @@ class ControlController extends Controller
 	}
 	public function editConf($id)
 	{
-		$controle = ConformityControl::find($id);
+		$controle = ConformityControl::where('id',$id)->first();
 
 		return \view(
-			'backoffice.controles.editConformity',
+			'backoffice.controles.editControl',
 			[
 				'conf' => $controle,
 			]
@@ -155,29 +155,29 @@ class ControlController extends Controller
 	 */
 	public function updateState(Request $request, $id)
 	{
-		$controle = StateControl::find($id);
+		$controle = StateControl::where('id', $id);
 		$controle->update([
 			'commentaire' => $request->commentaire,
 			'date' => $request->date
 		]);
 		return \view(
-			'backoffice.controles.showState',
+			'backoffice.controles.showControl',
 			[
-				'state' => $controle,
+				'state' => $controle->first(),
 			]
 		);
 	}
 	public function updateConf(Request $request, $id)
 	{
-		$controle = ConformityControl::find($id);
+		$controle = ConformityControl::where('id',$id);
 		$controle->update([
 			'commentaire' => $request->commentaire,
 			'date' => $request->date
 		]);
 		return \view(
-			'backoffice.controles.showConformity',
+			'backoffice.controles.showControl',
 			[
-				'conf' => $controle,
+				'conf' => $controle->first(),
 			]
 		);
 	}
