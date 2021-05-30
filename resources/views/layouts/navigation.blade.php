@@ -16,25 +16,25 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Tableau de bord') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('showClient',Auth::id())">
+                    <x-nav-link :href="route('showClient',Auth::id())" :active="request()->is('client/show/*')">
                         {{ __('Mon compte') }}
-                    </x-nav-link>                    
+                    </x-nav-link>
                     @else
-                        <x-nav-link :href="route('contracts')">
-                            {{ __('Contrats') }}
-                        </x-nav-link>
-                        <x-nav-link :href="route('controls')">
-                            {{ __('Controles') }}
-                        </x-nav-link>
-                        <x-nav-link :href="route('employes')">
-                            {{ __('Employés') }}
-                        </x-nav-link>
-                    
-                        <x-nav-link :href="route('clients')">
-                            {{ __('Clients') }}
-                        </x-nav-link>
+                    <x-nav-link :href="route('contracts')" :active="request()->is('contract*')">
+                        {{ __('Contrats') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('controls')" :active="request()->is('control*')">
+                        {{ __('Controles') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('employes')" :active="request()->is('employe*')">
+                        {{ __('Employés') }}
+                    </x-nav-link>
+
+                    <x-nav-link :href="route('clients')" :active="request()->is('client*')">
+                        {{ __('Clients') }}
+                    </x-nav-link>
                     @endif
-                    <x-nav-link :href="route('vehicules')">
+                    <x-nav-link :href="route('vehicules')" :active="request()->is('vehicule*')">
                         {{ __('Véhicules') }}
                     </x-nav-link>
                 </div>
@@ -60,8 +60,7 @@
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
+                            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                                                 this.closest('form').submit();">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
