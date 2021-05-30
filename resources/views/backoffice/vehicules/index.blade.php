@@ -14,7 +14,7 @@
 				<div class="p-6 bg-white border-b border-gray-200">
 					@if (!Auth::user()->isClient())
 					<div class="mb-6">
-						<a class=" p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 justify-center focus:bg-purple-700 hover:bg-purple-500" href="{{route('createVehicule')}}">Ajouter une voiture</a>
+						<a class=" p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 justify-center focus:bg-purple-700 hover:bg-purple-500" href="{{route('createVehicule')}}">Ajouter un véhicule</a>
 					</div>
 					@endif
 					<table class=" w-full table-auto">

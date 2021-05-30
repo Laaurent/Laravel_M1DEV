@@ -16,7 +16,7 @@
                         @csrf
 
                         <div>
-                            <label for="cars">Voitures</label>
+                            <label for="cars">Véhicule</label>
                             @if (auth()->user()->client()->isPhysic())
                             <select class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" name="cars[]" id="cars" required>
                                 @foreach ($vehicules as $vehicule)

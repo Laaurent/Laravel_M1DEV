@@ -17,7 +17,7 @@
 						<li>Employe : {{$contract->employe->first_name}} {{$contract->employe->last_name}}</li>
 						<li>Date début : {{$contract->contract_start}}</li>
 						<li>Client : {{$contract->contract_end}}</li>
-						<li>Vehicule :
+						<li>Véhicule :
 							@foreach ($contract->contract_vehicule as $contract2)
 							{{$contract2->vehicule->brand}} {{$contract2->vehicule->model}}
 							@if (!$loop->last)
