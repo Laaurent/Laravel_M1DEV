@@ -36,6 +36,9 @@
                         {{ __('Mon compte') }}
                     </x-nav-link>
                     @else
+                    <x-nav-link :href="route('showEmploye',Auth::user()->employe()->id)" :active="request()->is('employe/show/*')">
+                        {{ __('Mon compte') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('contracts')" :active="request()->is('contract*')">
                         {{ __('Contrats') }}
                     </x-nav-link>

@@ -20,13 +20,17 @@
                             @if (auth()->user()->client()->isPhysic())
                             <select class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" name="cars[]" id="cars" required>
                                 @foreach ($vehicules as $vehicule)
-                                <option value="{{$vehicule->id}}">{{$vehicule->brand}} - {{$vehicule->model}} </option>
+                                    @if ($vehicule->isValid())
+                                    <option value="{{$vehicule->id}}">{{$vehicule->brand}} - {{$vehicule->model}} </option>
+                                    @endif
                                 @endforeach
                             </select>
                             @else
                             <select class="border-0 p-4 placeholder-gray-400 text-gray-700 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full" name="cars[]" id="cars" multiple required>
                                 @foreach ($vehicules as $vehicule)
-                                <option value="{{$vehicule->id}}">{{$vehicule->brand}} - {{$vehicule->model}} </option>
+                                    @if ($vehicule->isValid())
+                                    <option value="{{$vehicule->id}}">{{$vehicule->brand}} - {{$vehicule->model}} </option>
+                                    @endif
                                 @endforeach
                             </select>
                             @endif

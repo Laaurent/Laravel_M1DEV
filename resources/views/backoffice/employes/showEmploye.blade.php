@@ -13,15 +13,22 @@
 			<div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 				<div class="p-6 bg-white border-b border-gray-200">
 					<ul>
+						<li> Statut : @if ($employe->active)
+											<span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Disponible</span>
+										@else
+											<span class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">Archivé</span>
+										@endif
+						</li>
 						<li> Pseudo : {{$employe->user->name}} </li>
 						<li> Email : {{$employe->user->email}} </li>
 						<li> Prénom : {{$employe->first_name}} </li>
 						<li> Nom : {{$employe->last_name}} </li>
 					</ul>
-					<br>
+					@if ($employe->active)
 					<div class="mb-6 mt-6">
 						<a class=" p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 justify-center focus:bg-purple-700 hover:bg-purple-500" href="{{route('editEmploye',$employe->id)}}">éditer</a>
 					</div>
+					@endif
 					<h1 class="text-xl font-bold">Historique des contrats</h1>
 					<hr>
 					<table class=" w-full table-auto">
@@ -32,6 +39,7 @@
 								<th class="py-3 px-6 text-left">Employe</th>
 								<th class="py-3 px-6 text-left">Date début</th>
 								<th class="py-3 px-6 text-left">Date fin</th>
+								<th class="py-3 px-6 text-center">Statut</th>
 								<th class="py-3 px-6 text-center">Action</th>
 							</tr>
 						</thead>
@@ -47,6 +55,13 @@
 								<td class="py-3 px-6 text-left">{{$contract->employe->first_name}} {{$contract->employe->last_name}}</td>
 								<td class="py-3 px-6 text-left">{{$contract->contract_start}}</td>
 								<td class="py-3 px-6 text-left">{{$contract->contract_end}}</td>
+								<td class="py-3 px-6 text-center">
+									@if ($contract->active)
+										<span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Disponible</span>
+									@else
+										<span class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">Archivé</span>
+									@endif
+								</td>
 								<td class="py-3 px-6 text-center">
 									<div class="flex item-center justify-center">
 										<div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">

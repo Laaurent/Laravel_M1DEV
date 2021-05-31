@@ -24,6 +24,7 @@
 								<th class="py-3 px-6 text-left">Marque</th>
 								<th class="py-3 px-6 text-left">Modele</th>
 								<th class="py-3 px-6 text-left">Poids</th>
+								<th class="py-3 px-6 text-center">Satut</th>
 								<th class="py-3 px-6 text-center">Action</th>
 							</tr>
 						</thead>
@@ -34,6 +35,13 @@
 								<td class="py-3 px-6 text-left">{{$vehicule->brand}}</td>
 								<td class="py-3 px-6 text-left">{{$vehicule->model}}</td>
 								<td class="py-3 px-6 text-left">{{$vehicule->weight}}</td>
+								<td class="py-3 px-6 text-center">
+									@if ($vehicule->active)
+										<span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Disponible</span>
+									@else
+										<span class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">Archivé</span>
+									@endif
+								</td>
 								<td class="py-3 px-6 text-center">
 									<div class="flex item-center justify-center">
 										<div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">

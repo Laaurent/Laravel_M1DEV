@@ -36,7 +36,7 @@ class ContractController extends Controller
 	 */
 	public function create()
 	{
-		$vehicules = Vehicule::all();
+		$vehicules = Vehicule::where('active',1)->get();
 
 		return \view(
 			'backoffice.contrats.createContract',
@@ -105,9 +105,9 @@ class ContractController extends Controller
 	{
 		$contract = Contract::with(['contract_vehicule.vehicule'])->find($id);
 
-		$vehicules = Vehicule::all();
+		$vehicules = Vehicule::where('active',1)->get();
 
-		$employes = Employe::all();
+		$employes = Employe::where('active',1)->get();
 
 		return \view(
 			'backoffice.contrats.editContract',

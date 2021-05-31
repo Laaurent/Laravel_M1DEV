@@ -20,6 +20,7 @@
 								<th class="py-3 px-6 text-left">Employe</th>
 								<th class="py-3 px-6 text-left">Date début</th>
 								<th class="py-3 px-6 text-left">Date fin</th>
+								<th class="py-3 px-6 text-center">Statut</th>
 								<th class="py-3 px-6 text-center">Action</th>
 							</tr>
 						</thead>
@@ -38,6 +39,13 @@
 								<td class="py-3 px-6 text-left">{{$contract->employe->first_name}} {{$contract->employe->last_name}}</td>
 								<td class="py-3 px-6 text-left">{{$contract->contract_start}}</td>
 								<td class="py-3 px-6 text-left">{{$contract->contract_end}}</td>
+								<td class="py-3 px-6 text-center">
+									@if ($contract->active)
+										<span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Disponible</span>
+									@else
+										<span class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">Archivé</span>
+									@endif
+								</td>
 								<td class="py-3 px-6 text-center">
 									<div class="flex item-center justify-center">
 										<div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">

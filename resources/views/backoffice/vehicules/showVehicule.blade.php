@@ -12,17 +12,30 @@
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
       <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <div class="p-6 bg-white border-b border-gray-200">
+       
+        	
           <ul>
+            <li> Statut : @if ($vehicule->active)
+                            <span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Disponible</span>
+                          @else
+                            <span class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">Archivé</span>
+                          @endif
+            </li>
             <li> Type : {{$vehicule->type}} </li>
             <li> Marque : {{$vehicule->brand}} </li>
             <li> Modèle : {{$vehicule->model}} </li>
             <li> Poids : {{$vehicule->weight}} </li>
-            @if (!Auth::user()->isClient())
+            <li> Controle Technique : @if ($vehicule->isValid())
+                            <span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">OK</span>
+                          @else
+                            <span class="bg-red-200 text-red-600 py-1 px-3 rounded-full text-xs">Pas à jour</span>
+                          @endif </li>
+          </ul>
+            @if (!Auth::user()->isClient() && $vehicule->active)
             <div class="mb-6 mt-6">
               <a class=" p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 justify-center focus:bg-purple-700 hover:bg-purple-500" href="{{route('editVehicule',$vehicule->id)}}">éditer</a>
             </div>
             @endif
-          </ul>
           <br>
           @if (!Auth::user()->isClient())
           <h1 class="text-xl font-bold">Historique des contrats</h1>
@@ -34,6 +47,7 @@
                 <th class="py-3 px-6 text-left">Employé</th>
                 <th class="py-3 px-6 text-left">Date début</th>
                 <th class="py-3 px-6 text-left">Date fin</th>
+                <th class="py-3 px-6 text-center">Statut</th>
                 <th class="py-3 px-6 text-center">Action</th>
               </tr>
             </thead>
@@ -44,6 +58,13 @@
                 <td class="py-3 px-6 text-left">{{$contract2->contract->employe->first_name}} {{$contract2->contract->employe->last_name}}</td>
                 <td class="py-3 px-6 text-left">{{$contract2->contract->contract_start}}</td>
                 <td class="py-3 px-6 text-left">{{$contract2->contract->contract_end}}</td>
+                <td class="py-3 px-6 text-center">
+									@if ($contract2->active)
+										<span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Disponible</span>
+									@else
+										<span class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">Archivé</span>
+									@endif
+								</td>
                 <td class="py-3 px-6 text-center">
                   <div class="flex item-center justify-center">
                     <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
@@ -95,15 +116,18 @@
 
           <br>
           <h1 class="text-xl font-bold">Historique des controle d'états</h1>
+          @if ($vehicule->active)
           <div class="mb-6 mt-6">
             <a class=" p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 justify-center focus:bg-purple-700 hover:bg-purple-500" href="{{route('createState',$vehicule->id)}}">Ajouter un contrôle d'état</a>
           </div>
+          @endif
           <hr>
           <table class=" w-full table-auto">
             <thead>
               <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                  <th class="py-3 px-6 text-left">commentaire</th>
+                  <th class="py-3 px-6 text-left">Commentaire</th>
                   <th class="py-3 px-6 text-left">Controle fait par</th>
+                  <th class="py-3 px-6 text-center">Statut</th>
                   <th class="py-3 px-6 text-center">Action</th>
                 </tr>
             </thead>
@@ -112,6 +136,13 @@
                 <tr>
                   <td class="py-3 px-6 text-left">{{$state->commentaire}}</td>
                   <td class="py-3 px-6 text-left">{{$state->employe->first_name}} {{$state->employe->last_name}}</td>
+                  <td class="py-3 px-6 text-center">
+									@if ($state->active)
+										<span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Disponible</span>
+									@else
+										<span class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">Archivé</span>
+									@endif
+								</td>
                   <td class="py-3 px-6 text-center">               
                     <div class="flex item-center justify-center">
                       <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">
@@ -161,7 +192,7 @@
           <br>
           @endif
           <h1 class="text-xl font-bold">Historique des controle de conformités</h1>
-          @if (!Auth::user()->isClient())
+          @if (!Auth::user()->isClient() && $vehicule->active)
           <div class="mb-6 mt-6">
             <a class=" p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 justify-center focus:bg-purple-700 hover:bg-purple-500" href="{{route('createConformity',$vehicule->id)}}">Ajouter un contrôle de conformité</a>
           </div>
@@ -170,8 +201,9 @@
           <table class=" w-full table-auto">
             <thead>
               <tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
-                <th class="py-3 px-6 text-left">commentaire</th>
-                <th class="py-3 px-6 text-left">date</th>
+                <th class="py-3 px-6 text-left">Commentaire</th>
+                <th class="py-3 px-6 text-left">Date</th>
+                <th class="py-3 px-6 text-center">Statut</th>
                 <th class="py-3 px-6 text-center">Action</th>
               </tr>
             </thead>
@@ -180,6 +212,13 @@
                 <tr>
                   <td class="py-3 px-6 text-left">{{$conf->commentaire}}</td>
                   <td class="py-3 px-6 text-left">{{$conf->date}}</td>
+                  <td class="py-3 px-6 text-center">
+									@if ($conf->active)
+										<span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Disponible</span>
+									@else
+										<span class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">Archivé</span>
+									@endif
+								</td>
                   <td class="py-3 px-6 text-center">               
                     <div class="flex item-center justify-center">
                       <div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">

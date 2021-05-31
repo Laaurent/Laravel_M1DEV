@@ -20,6 +20,7 @@
 							<tr class="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
 								<th class="py-3 px-6 text-left">Prenom</th>
 								<th class="py-3 px-6 text-left">Nom</th>
+								<th class="py-3 px-6 text-center">Statut</th>
 								<th class="py-3 px-6 text-center">Action</th>
 							</tr>
 						</thead>
@@ -28,6 +29,13 @@
 							<tr class="border-b border-gray-200 hover:bg-gray-100">
 								<td class="py-3 px-6 text-left">{{$employe->first_name}}</td>
 								<td class="py-3 px-6 text-left">{{$employe->last_name}}</td>
+								<td class="py-3 px-6 text-center">
+									@if ($employe->active)
+										<span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Disponible</span>
+									@else
+										<span class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">Archivé</span>
+									@endif
+								</td>
 								<td class="py-3 px-6 text-center">
 									<div class="flex item-center justify-center">
 										<div class="w-4 mr-2 transform hover:text-purple-500 hover:scale-110">

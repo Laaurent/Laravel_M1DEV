@@ -125,6 +125,8 @@ class VehiculeController extends Controller
 		
 		$vehicule->first()->contract_vehicule()->first()->contract()->delete();
 		$vehicule->first()->contract_vehicule()->delete();
+		$vehicule->first()->states_controls()->delete();
+		$vehicule->first()->conformity_control()->delete();
 		$vehicule->delete();
 
 		return redirect()->route('vehicules');
@@ -146,6 +148,12 @@ class VehiculeController extends Controller
 				'active' => 0
 			]);
 			$vehicule->first()->contract_vehicule()->update([
+				'active' => 0
+			]);
+			$vehicule->first()->states_controls()->update([
+				'active' => 0
+			]);
+			$vehicule->first()->conformity_control()->update([
 				'active' => 0
 			]);
 		}

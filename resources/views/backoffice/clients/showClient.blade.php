@@ -13,6 +13,12 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <ul>
+                        <li> Statut : @if ($client->active)
+                                <span class="bg-green-200 text-green-600 py-1 px-3 rounded-full text-xs">Disponible</span>
+                            @else
+                                <span class="bg-purple-200 text-purple-600 py-1 px-3 rounded-full text-xs">Archivé</span>
+                            @endif
+                        </li>
                         <li>Pseudo : {{$client->user->name}} </li>
                         <li>Email : {{$client->user->email}}</li>
                         <li>N° Client : {{$client->client_number}}</li>
@@ -25,9 +31,11 @@
                         @endif
                     </ul>
 
-                    <div class="mb-6 mt-6">
-                        <a class=" p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 justify-center focus:bg-purple-700 hover:bg-purple-500" href="{{route('editClient',$client->id_user)}}">éditer</a>
-                    </div>
+                    @if ($client->active)
+                        <div class="mb-6 mt-6">
+                            <a class=" p-3 rounded-lg bg-purple-600 outline-none text-white shadow w-32 justify-center focus:bg-purple-700 hover:bg-purple-500" href="{{route('editClient',$client->id_user)}}">éditer</a>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

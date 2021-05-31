@@ -29,7 +29,7 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
-        $contracts = Contract::where('id_client',Auth::id())->get();
+        $contracts = Contract::where('id_client',Auth::id())->where('active',1)->get();
 
         return view('backoffice.dashboard',[
             'contracts' => $contracts
